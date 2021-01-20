@@ -2,7 +2,7 @@
 //  ImagePicker.swift
 //  ImageStyle
 //
-//  Created by sunnywei on 2021-01-05.
+//  Created by Lai Wei on 2021-01-05.
 //
 
 import SwiftUI
