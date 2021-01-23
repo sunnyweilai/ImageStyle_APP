@@ -2,14 +2,14 @@
 //  ContentView.swift
 //  ImageStyle
 //
-//  Created by sunnywei on 2021-01-05.
+//  Created by lai wei on 2021-01-05.
 //
 
 import SwiftUI
 import CoreImage
 import CoreImage.CIFilterBuiltins
 
-struct ContentView: View {
+struct ImageFilterStyleView: View {
     
     @State private var image: Image?
     @State private var filterIntensity = 0.5
@@ -19,6 +19,8 @@ struct ContentView: View {
     
     @State private var currentFilter: CIFilter = CIFilter.sepiaTone()
     @State private var showingFilterSheet = false
+    
+    @State private var processedImage: UIImage?
     let context = CIContext()
     var body: some View {
         let intensity = Binding<Double>(
@@ -69,11 +71,16 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Save"){
-                        // save the picture
+                        guard let processedImage = self.processedImage else {
+                            return
+                        }
+                        
+                    let imageSaver = ImageSaver()
+                        imageSaver.writeToPhotoAlbum(image: processedImage)
                     }
                 }
             }.padding([.horizontal, .bottom])
-            .navigationBarTitle("Instafilter")
+            .navigationBarTitle("Edit")
             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage){
                 ImagePicker(image: self.$inputImage)
             }
@@ -106,6 +113,7 @@ struct ContentView: View {
         if let cgimg = context.createCGImage(outputImage, from: outputImage.extent){
             let uiImage = UIImage(cgImage: cgimg)
             image = Image(uiImage: uiImage)
+            processedImage = uiImage
         }
     }
     
@@ -117,6 +125,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ImageFilterStyleView()
     }
 }

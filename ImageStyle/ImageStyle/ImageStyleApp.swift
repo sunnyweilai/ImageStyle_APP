@@ -11,7 +11,16 @@ import SwiftUI
 struct ImageStyleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView{
+            ImageTransferStyleView().tabItem {
+                Image(systemName: "wand.and.stars")
+                Text("Style Transfer")
+            }
+            ImageFilterStyleView().tabItem {
+                Image(systemName: "slider.vertical.3")
+                Text("Style Edit")
+            }
+            }
         }
     }
 }
