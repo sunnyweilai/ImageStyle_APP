@@ -79,7 +79,8 @@ struct ImageFilterStyleView: View {
                         imageSaver.writeToPhotoAlbum(image: processedImage)
                     }
                 }
-            }.padding([.horizontal, .bottom])
+            }
+            .padding([.horizontal, .bottom])
             .navigationBarTitle("Edit")
             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage){
                 ImagePicker(image: self.$inputImage)
