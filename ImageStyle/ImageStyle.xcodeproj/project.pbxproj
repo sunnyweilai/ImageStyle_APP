@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7091663425F0405A0016DC6A /* KoreanStyle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */; };
+		7091663925F16F3B0016DC6A /* ImageMLFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */; };
 		A3483BD625BA1EE200F483F2 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3483BD525BA1EE200F483F2 /* ImageSaver.swift */; };
 		A364563F25BCBCCF0087D5BF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364563E25BCBCCF0087D5BF /* ImageManager.swift */; };
 		A364564825BCC7670087D5BF /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364564725BCC7670087D5BF /* AlertController.swift */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = KoreanStyle.mlmodel; sourceTree = "<group>"; };
+		7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMLFilterView.swift; sourceTree = "<group>"; };
 		A3483BD525BA1EE200F483F2 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		A364563E25BCBCCF0087D5BF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A364564725BCC7670087D5BF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -82,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7091663225F0403D0016DC6A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A364564625BCC7510087D5BF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +105,7 @@
 		A3BA729E25A5540D00D0EC40 = {
 			isa = PBXGroup;
 			children = (
+				7091663225F0403D0016DC6A /* Models */,
 				A3BA72A925A5540D00D0EC40 /* ImageStyle */,
 				A3BA72BB25A5541700D0EC40 /* ImageStyleTests */,
 				A3BA72C625A5541700D0EC40 /* ImageStyleUITests */,
@@ -165,6 +178,7 @@
 			children = (
 				A3BA72AC25A5540D00D0EC40 /* ImageFilterStyleView.swift */,
 				A3FB1E8E25BBC6270033DF5E /* ImageTransferStyleView.swift */,
+				7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,6 +316,8 @@
 				A3BA72AD25A5540D00D0EC40 /* ImageFilterStyleView.swift in Sources */,
 				A3BA72AB25A5540D00D0EC40 /* ImageStyleApp.swift in Sources */,
 				A364563F25BCBCCF0087D5BF /* ImageManager.swift in Sources */,
+				7091663925F16F3B0016DC6A /* ImageMLFilterView.swift in Sources */,
+				7091663425F0405A0016DC6A /* KoreanStyle.mlmodel in Sources */,
 				A364564825BCC7670087D5BF /* AlertController.swift in Sources */,
 				A3FB1E8F25BBC6270033DF5E /* ImageTransferStyleView.swift in Sources */,
 				A3483BD625BA1EE200F483F2 /* ImageSaver.swift in Sources */,

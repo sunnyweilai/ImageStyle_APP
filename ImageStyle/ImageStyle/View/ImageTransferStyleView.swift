@@ -18,10 +18,11 @@ struct ImageTransferStyleView: View {
     
     @ObservedObject var image = ImageManager.shared
     var body: some View {
+        GeometryReader{ geo in
         NavigationView{
             VStack{
                 ZStack{
-                    Rectangle().fill(Color.secondary)
+                    RoundedRectangle(cornerRadius: 10).fill(Color.secondary).frame(height: geo.size.height / 2)
                     
                     if contentImage != nil{
                         contentImage?.resizable()
@@ -35,39 +36,35 @@ struct ImageTransferStyleView: View {
                     self.showingImagePicker = true
                     self.isContentImageSelected = true
                 }
-                
-                ZStack{
-                    Rectangle().fill(Color.secondary)
-                    
-                    if styleImage != nil{
-                        styleImage?.resizable()
-                            .scaledToFit()
-                    }else{
-                        Text("Tap to select your style picture")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                    }
-                }.onTapGesture {
-                    self.showingImagePicker = true
+                VStack{
+                    Spacer()
+                    ImageMLFilterView().frame(height: 180, alignment: .leading)
                 }
+                
+                
+                //                ZStack{
+                //                    Rectangle().fill(Color.secondary)
+                //
+                //                    if styleImage != nil{
+                //                        styleImage?.resizable()
+                //                            .scaledToFit()
+                //                    }else{
+                //                        Text("Tap to select your style picture")
+                //                            .foregroundColor(.white)
+                //                            .font(.headline)
+                //                    }
+                //                }.onTapGesture {
+                //                    self.showingImagePicker = true
+                //                }
             }.padding([.horizontal, .bottom])
             .navigationBarTitle("Edit")
-            .navigationBarItems(
-                                trailing:
-                                    Button(action: {
-                                            self.image.ImagesAreReady(contentImage, styleImage)
-                                        
-                                        
-                                    }) {
-                                        Text("Next")
-                                    }
-//                                    .alert(isPresented: $isReady) {
-//                                        Alert(title: Text("Important message"), message: Text("Wear sunscreen"), dismissButton: .default(Text("Got it!")))
-//                                    }
-                            )
+            .navigationBarItems(trailing: Button("Next"){
+                self.image.ImagesAreReady(contentImage, styleImage)
+            })
             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage){
                 ImagePicker(image: self.$pickedImage)
             }
+        }
         }
     }
     
