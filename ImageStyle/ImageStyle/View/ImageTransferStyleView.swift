@@ -9,14 +9,13 @@ import SwiftUI
 
 struct ImageTransferStyleView: View {
     @State private var contentImage: Image?
-    @State private var styleImage: Image?
+    
     @State private var pickedImage: UIImage?
     @State private var showingImagePicker = false
-    @State private var isContentImageSelected = false
-    
-    @State private var isReady = false
+    @State private var imageIsReady = false
     
     @ObservedObject var image = ImageManager.shared
+    @ObservedObject var model = ModelManager.shared
     var body: some View {
         GeometryReader{ geo in
         NavigationView{
@@ -24,42 +23,35 @@ struct ImageTransferStyleView: View {
                 ZStack{
                     RoundedRectangle(cornerRadius: 10).fill(Color.secondary).frame(height: geo.size.height / 2)
                     
+                    if model.styledImage != nil {
+                        Image(uiImage: model.styledImage!).resizable()
+                            .scaledToFit()
+                    }else{
                     if contentImage != nil{
                         contentImage?.resizable()
                             .scaledToFit()
-                    }else{
+                        }
+                    else{
                         Text("Tap to select your content picture")
                             .foregroundColor(.white)
                             .font(.headline)
                     }
+                    }
                 }.onTapGesture {
                     self.showingImagePicker = true
-                    self.isContentImageSelected = true
+                    
                 }
                 VStack{
                     Spacer()
-                    ImageMLFilterView().frame(height: 180, alignment: .leading)
+                    ImageMLFilterView(inputImage: pickedImage).frame(height: 180, alignment: .leading)
                 }
-                
-                
-                //                ZStack{
-                //                    Rectangle().fill(Color.secondary)
-                //
-                //                    if styleImage != nil{
-                //                        styleImage?.resizable()
-                //                            .scaledToFit()
-                //                    }else{
-                //                        Text("Tap to select your style picture")
-                //                            .foregroundColor(.white)
-                //                            .font(.headline)
-                //                    }
-                //                }.onTapGesture {
-                //                    self.showingImagePicker = true
-                //                }
+                NavigationLink(destination: MoodView(), isActive: $imageIsReady){ EmptyView() }
+             
             }.padding([.horizontal, .bottom])
             .navigationBarTitle("Edit")
             .navigationBarItems(trailing: Button("Next"){
-                self.image.ImagesAreReady(contentImage, styleImage)
+                imageIsReady = self.image.ImagesAreReady(contentImage)
+                
             })
             .sheet(isPresented: $showingImagePicker, onDismiss: loadImage){
                 ImagePicker(image: self.$pickedImage)
@@ -73,12 +65,9 @@ struct ImageTransferStyleView: View {
             return
         }
         let inputImage = Image(uiImage: pickedImage)
-        if isContentImageSelected {
             contentImage = inputImage
-            self.isContentImageSelected = false
-        }else{
-            styleImage = inputImage
-        }
+            model.styledImage = nil
+      
     }
 }
 

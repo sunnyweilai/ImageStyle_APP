@@ -20,10 +20,13 @@ class ImageManager: ObservableObject {
     /// this is used to verify if both images are selected to go to next step
     @Published var pubImagesAreReady = false
     
-    public func ImagesAreReady(_ contentImg: Image?, _ styleImg: Image?){
-        guard let  _ = contentImg, let _ = styleImg  else {
+    public func ImagesAreReady(_ contentImg: Image?) -> Bool{
+        var isReady = true
+        guard let  _ = contentImg else {
             AlertController.presentAlert(title: nil, message: "Please select the image")
-            return
+            isReady = false
+            return isReady
         }
+        return isReady
     }
 }

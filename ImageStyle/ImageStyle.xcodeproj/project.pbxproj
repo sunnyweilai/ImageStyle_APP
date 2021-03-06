@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7091663425F0405A0016DC6A /* KoreanStyle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */; };
 		7091663925F16F3B0016DC6A /* ImageMLFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */; };
+		7091663F25F190A20016DC6A /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091663E25F190A20016DC6A /* ModelManager.swift */; };
+		7091665025F1B8840016DC6A /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091664F25F1B8840016DC6A /* UIImageExtension.swift */; };
+		70CE3C3525F3DC72003264CB /* PeachBlushStyle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 70CE3C3425F3DC71003264CB /* PeachBlushStyle.mlmodel */; };
+		70CE3C3A25F40857003264CB /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE3C3925F40857003264CB /* MoodView.swift */; };
 		A3483BD625BA1EE200F483F2 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3483BD525BA1EE200F483F2 /* ImageSaver.swift */; };
 		A364563F25BCBCCF0087D5BF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364563E25BCBCCF0087D5BF /* ImageManager.swift */; };
 		A364564825BCC7670087D5BF /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364564725BCC7670087D5BF /* AlertController.swift */; };
@@ -42,6 +46,10 @@
 /* Begin PBXFileReference section */
 		7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = KoreanStyle.mlmodel; sourceTree = "<group>"; };
 		7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMLFilterView.swift; sourceTree = "<group>"; };
+		7091663E25F190A20016DC6A /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
+		7091664F25F1B8840016DC6A /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		70CE3C3425F3DC71003264CB /* PeachBlushStyle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PeachBlushStyle.mlmodel; sourceTree = "<group>"; };
+		70CE3C3925F40857003264CB /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
 		A3483BD525BA1EE200F483F2 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		A364563E25BCBCCF0087D5BF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A364564725BCC7670087D5BF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -90,8 +98,17 @@
 			isa = PBXGroup;
 			children = (
 				7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */,
+				70CE3C3425F3DC71003264CB /* PeachBlushStyle.mlmodel */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		7091664325F1B3CA0016DC6A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7091664F25F1B8840016DC6A /* UIImageExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A364564625BCC7510087D5BF /* Controller */ = {
@@ -105,6 +122,7 @@
 		A3BA729E25A5540D00D0EC40 = {
 			isa = PBXGroup;
 			children = (
+				7091664325F1B3CA0016DC6A /* Extensions */,
 				7091663225F0403D0016DC6A /* Models */,
 				A3BA72A925A5540D00D0EC40 /* ImageStyle */,
 				A3BA72BB25A5541700D0EC40 /* ImageStyleTests */,
@@ -169,6 +187,7 @@
 				A3BA72D925A5551900D0EC40 /* ImagePicker.swift */,
 				A3483BD525BA1EE200F483F2 /* ImageSaver.swift */,
 				A364563E25BCBCCF0087D5BF /* ImageManager.swift */,
+				7091663E25F190A20016DC6A /* ModelManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -179,6 +198,7 @@
 				A3BA72AC25A5540D00D0EC40 /* ImageFilterStyleView.swift */,
 				A3FB1E8E25BBC6270033DF5E /* ImageTransferStyleView.swift */,
 				7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */,
+				70CE3C3925F40857003264CB /* MoodView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -314,13 +334,17 @@
 			files = (
 				A3BA72DA25A5551900D0EC40 /* ImagePicker.swift in Sources */,
 				A3BA72AD25A5540D00D0EC40 /* ImageFilterStyleView.swift in Sources */,
+				70CE3C3A25F40857003264CB /* MoodView.swift in Sources */,
 				A3BA72AB25A5540D00D0EC40 /* ImageStyleApp.swift in Sources */,
 				A364563F25BCBCCF0087D5BF /* ImageManager.swift in Sources */,
+				7091665025F1B8840016DC6A /* UIImageExtension.swift in Sources */,
 				7091663925F16F3B0016DC6A /* ImageMLFilterView.swift in Sources */,
 				7091663425F0405A0016DC6A /* KoreanStyle.mlmodel in Sources */,
 				A364564825BCC7670087D5BF /* AlertController.swift in Sources */,
+				7091663F25F190A20016DC6A /* ModelManager.swift in Sources */,
 				A3FB1E8F25BBC6270033DF5E /* ImageTransferStyleView.swift in Sources */,
 				A3483BD625BA1EE200F483F2 /* ImageSaver.swift in Sources */,
+				70CE3C3525F3DC72003264CB /* PeachBlushStyle.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +503,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ImageStyle/Preview Content\"";
-				DEVELOPMENT_TEAM = 4CXV7NJC3G;
+				DEVELOPMENT_TEAM = P2M55U69JL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ImageStyle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -487,7 +511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = COM.IBI..ImageStyle;
+				PRODUCT_BUNDLE_IDENTIFIER = laiwei.sunny.ImageStyle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -501,7 +525,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ImageStyle/Preview Content\"";
-				DEVELOPMENT_TEAM = 4CXV7NJC3G;
+				DEVELOPMENT_TEAM = P2M55U69JL;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = ImageStyle/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -509,7 +533,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = COM.IBI..ImageStyle;
+				PRODUCT_BUNDLE_IDENTIFIER = laiwei.sunny.ImageStyle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
