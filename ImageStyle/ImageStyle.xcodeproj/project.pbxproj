@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		705E098625F5BEA500E05A84 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E098525F5BEA500E05A84 /* ColorExtension.swift */; };
+		707400DF25F6CA0D001E1F70 /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707400DE25F6CA0D001E1F70 /* SwiftUIExtension.swift */; };
 		7091663425F0405A0016DC6A /* KoreanStyle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */; };
 		7091663925F16F3B0016DC6A /* ImageMLFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */; };
 		7091663F25F190A20016DC6A /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091663E25F190A20016DC6A /* ModelManager.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		705E098525F5BEA500E05A84 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		707400DE25F6CA0D001E1F70 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtension.swift; sourceTree = "<group>"; };
 		7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = KoreanStyle.mlmodel; sourceTree = "<group>"; };
 		7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMLFilterView.swift; sourceTree = "<group>"; };
 		7091663E25F190A20016DC6A /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				7091664F25F1B8840016DC6A /* UIImageExtension.swift */,
+				705E098525F5BEA500E05A84 /* ColorExtension.swift */,
+				707400DE25F6CA0D001E1F70 /* SwiftUIExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -332,11 +338,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				707400DF25F6CA0D001E1F70 /* SwiftUIExtension.swift in Sources */,
 				A3BA72DA25A5551900D0EC40 /* ImagePicker.swift in Sources */,
 				A3BA72AD25A5540D00D0EC40 /* ImageFilterStyleView.swift in Sources */,
 				70CE3C3A25F40857003264CB /* MoodView.swift in Sources */,
 				A3BA72AB25A5540D00D0EC40 /* ImageStyleApp.swift in Sources */,
 				A364563F25BCBCCF0087D5BF /* ImageManager.swift in Sources */,
+				705E098625F5BEA500E05A84 /* ColorExtension.swift in Sources */,
 				7091665025F1B8840016DC6A /* UIImageExtension.swift in Sources */,
 				7091663925F16F3B0016DC6A /* ImageMLFilterView.swift in Sources */,
 				7091663425F0405A0016DC6A /* KoreanStyle.mlmodel in Sources */,

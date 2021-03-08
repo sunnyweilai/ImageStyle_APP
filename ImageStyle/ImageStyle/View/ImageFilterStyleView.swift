@@ -33,12 +33,11 @@ struct ImageFilterStyleView: View {
         return NavigationView{
             VStack{
                 ZStack{
-                    Rectangle().fill(Color.secondary)
-                    
                     if image != nil{
                         image?.resizable()
                             .scaledToFit()
                     }else{
+                        Rectangle().fill(Color.white).opacity(0.4)
                         Text("Tap to select a picture")
                             .foregroundColor(.white)
                             .font(.headline)

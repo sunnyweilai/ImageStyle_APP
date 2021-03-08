@@ -10,18 +10,13 @@ import SwiftUI
 @main
 struct ImageStyleApp: App {
     @ObservedObject var alert = AlertController.shared
+    let startColor = "#FEA2A2"
+    let endColor = "#E5CF7E"
+   
     var body: some Scene {
         WindowGroup {
-            TabView{
-            ImageTransferStyleView().tabItem {
-                Image(systemName: "wand.and.stars")
-                Text("Style Transfer")
-            }
-            ImageFilterStyleView().tabItem {
-                Image(systemName: "slider.vertical.3")
-                Text("Style Edit")
-            }
-            }.alert(isPresented: self.$alert.presentAlert){ () -> Alert in
+            ImageTransferStyleView()
+            .alert(isPresented: self.$alert.presentAlert){ () -> Alert in
                 if self.alert.type == .confirm {
                     return Alert(title: Text(alert.title ?? ""), message: Text(alert.message), primaryButton: Alert.Button.default(Text(alert.confirmButtonText), action: {
                         self.alert.confirm?()
@@ -30,6 +25,7 @@ struct ImageStyleApp: App {
                     }))
                 }
                 return Alert(title: Text(alert.title ?? ""), message: Text(alert.message), dismissButton: .default(Text("OK")))
+                    
         }
         }
     }

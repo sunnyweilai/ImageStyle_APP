@@ -19,7 +19,7 @@ struct ImageMLFilterView: View {
             }
         }
         }.frame(height: 170, alignment: .leading)
-        }
+        }.background(Color.clear)
     }
 }
 

@@ -16,48 +16,88 @@ struct ImageTransferStyleView: View {
     
     @ObservedObject var image = ImageManager.shared
     @ObservedObject var model = ModelManager.shared
+    
+    @State var constrastState: Double = 1
+    @State var brightnessState: Double = 0
+    @State var saturationState: Double = 1
+    
+    let startColor = "#FEA2A2"
+    let endColor = "#E5CF7E"
+    
+    init() {
+        
+    }
     var body: some View {
-        GeometryReader{ geo in
-        NavigationView{
-            VStack{
-                ZStack{
-                    RoundedRectangle(cornerRadius: 10).fill(Color.secondary).frame(height: geo.size.height / 2)
-                    
-                    if model.styledImage != nil {
-                        Image(uiImage: model.styledImage!).resizable()
-                            .scaledToFit()
-                    }else{
-                    if contentImage != nil{
-                        contentImage?.resizable()
-                            .scaledToFit()
-                        }
-                    else{
-                        Text("Tap to select your content picture")
-                            .foregroundColor(.white)
-                            .font(.headline)
-                    }
-                    }
-                }.onTapGesture {
-                    self.showingImagePicker = true
-                    
-                }
+        let styledImage = model.styledImage
+        
+        return NavigationView{
+            GeometryReader{ geo in
                 VStack{
+                    ZStack{
+                        if styledImage != nil {
+                            Image(uiImage: styledImage!)
+                                .resizable()
+                                .scaledToFit()
+                                .brightness(brightnessState)
+                                .contrast(constrastState)
+                                .saturation(saturationState)
+                        }else{
+                            if contentImage != nil{
+                                contentImage?
+                                    .resizable()
+                                    .scaledToFit()
+                                    .brightness(brightnessState)
+                                    .contrast(constrastState)
+                                    .saturation(saturationState)
+                            }
+                            else{
+                                RoundedRectangle(cornerRadius: 10).fill(Color.white).opacity(0.4).frame(height: geo.size.height / 2)
+                                Text("Tap to select your content picture")
+                                    .foregroundColor(.white)
+                                    .font(.headline)
+                            }
+                        }
+                        
+                        
+                        
+                    }.onTapGesture {
+                        self.showingImagePicker = true
+                    }
+                    
                     Spacer()
-                    ImageMLFilterView(inputImage: pickedImage).frame(height: 180, alignment: .leading)
-                }
-                NavigationLink(destination: MoodView(), isActive: $imageIsReady){ EmptyView() }
-             
-            }.padding([.horizontal, .bottom])
-            .navigationBarTitle("Edit")
-            .navigationBarItems(trailing: Button("Next"){
-                imageIsReady = self.image.ImagesAreReady(contentImage)
+                   
+                    TabView{
+                        
+                        ImageMLFilterView(inputImage: pickedImage).frame(alignment: .leading).tabItem{Text("Style")}.padding(.leading, 10).background(Color(hex: endColor))
+                        ImageEditView(constrastState: $constrastState, brightnessState: $brightnessState, saturationState: $saturationState).tabItem{Text("Edit")}.padding(.horizontal, 10).background(Color(hex: endColor))
+                    }.onAppear() {
+                        
+                        UITabBar.appearance().barTintColor = UIColor(hex: endColor)
+                       
+                        
+                    }
+                    .accentColor(.black)
+                    .frame(height: 250).clipShape(RoundedRectangle(cornerRadius: 10))
+                    
+                    
+                    
+                    NavigationLink(destination: MoodView(), isActive: $imageIsReady){ EmptyView() }
+                    
+                }.padding([.horizontal, .bottom])
                 
-            })
-            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage){
-                ImagePicker(image: self.$pickedImage)
-            }
-        }
-        }
+                .navigationBarItems(trailing: Button("Next"){
+                    imageIsReady = self.image.ImagesAreReady(contentImage)
+                    
+                })
+                .navigationBarTitle(Text(""), displayMode: .inline)
+                
+                .sheet(isPresented: $showingImagePicker, onDismiss: loadImage){
+                    ImagePicker(image: self.$pickedImage)
+                }
+                
+            }.background(LinearGradient(gradient: Gradient(colors: [Color(hex: startColor), Color(hex: endColor)]), startPoint: .top, endPoint: .bottom))
+        }.navigationBarColor(backgroundColor: UIColor(hex: startColor), titleColor: .white)
+        
     }
     
     func loadImage() {
@@ -65,9 +105,36 @@ struct ImageTransferStyleView: View {
             return
         }
         let inputImage = Image(uiImage: pickedImage)
-            contentImage = inputImage
-            model.styledImage = nil
-      
+        contentImage = inputImage
+        
+        model.styledImage = nil
+        
+    }
+}
+
+struct ImageEditView: View {
+    @Binding var constrastState: Double
+    @Binding var brightnessState: Double
+    @Binding var saturationState: Double
+    var body: some View {
+        VStack{
+            Spacer()
+            HStack{
+                Text("Constrast")
+                Slider(value: $constrastState, in: 0...1).accentColor(.white)
+            }
+            Spacer()
+            HStack{
+                Text("Brightness")
+                Slider(value: $brightnessState, in: 0...1).accentColor(.white)
+            }
+            Spacer()
+            HStack{
+                Text("Saturation")
+                Slider(value: $saturationState, in: 0...1).accentColor(.white)
+            }
+            Spacer()
+        }
     }
 }
 
