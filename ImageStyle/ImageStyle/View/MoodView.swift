@@ -10,39 +10,41 @@ import SwiftUI
 struct MoodView: View {
     @ObservedObject var model = ModelManager.shared
     @State var moodText = ""
+    var pickedImage: Image
     let date = Date()
     var body: some View {
         GeometryReader{ geo in
             
             ScrollView{
                 VStack{
-                    Image("PeachBlushStyleTemplate").resizable().frame(width: geo.size.height / 4 ,height: geo.size.height / 4 , alignment: .center).clipShape(RoundedRectangle(cornerRadius: 10))
-                    Text("\(dateTransform(date: date))")
+                    Spacer().frame(height: 20)
+                    pickedImage.resizable().frame(width: geo.size.height / 4 ,height: geo.size.height / 4 , alignment: .center).clipShape(RoundedRectangle(cornerRadius: 10))
+                    Spacer().frame(height: 20)
                     ZStack(alignment: .top){
                         HStack{
                             TextEditor(text: $moodText)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color.gray, lineWidth: 1)
-                                )
                                 .keyboardType(.asciiCapable)
                                 .lineSpacing(5)
+                                .opacity(0.5)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                
+                               
                                 
                             
                         }.frame(minHeight: 150)
                         HStack{
-                            Text("Start from here...").foregroundColor(Color.gray).opacity(moodText.count > 0 ? 0 : 100)
+                            Text("Start from here...").font(.hintFont).foregroundColor(Color.gray).opacity(moodText.count > 0 ? 0 : 100)
                             Spacer()
                         }.frame(height: 40).padding([.leading,.top],5)
                     }
                 }.padding([.horizontal, .bottom])
-            }
-        }
+            }.navigationBarTitle(Text("\(dateTransform(date: date))"),displayMode: .inline)
+        }.background(LinearGradient.primaryBackgroundColor)
     }
     
     func dateTransform(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+        formatter.dateFormat = "MMM,d"
         let dateString = formatter.string(from: date)
         return dateString
     }
@@ -50,6 +52,6 @@ struct MoodView: View {
 
 struct MoodView_Previews: PreviewProvider {
     static var previews: some View {
-        MoodView()
+        MoodView(pickedImage: Image(""))
     }
 }

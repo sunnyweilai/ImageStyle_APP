@@ -41,6 +41,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Rasa-Bold.ttf</string>
+		<string>Rasa-Light.ttf</string>
+		<string>Rasa-Medium.ttf</string>
+		<string>Rasa-Regular.ttf</string>
+		<string>Rasa-SemiBold.ttf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

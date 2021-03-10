@@ -81,7 +81,7 @@ struct ImageTransferStyleView: View {
                     
                     
                     
-                    NavigationLink(destination: MoodView(), isActive: $imageIsReady){ EmptyView() }
+                    NavigationLink(destination: MoodView(pickedImage: Image(uiImage: pickedImage ?? UIImage())), isActive: $imageIsReady){ EmptyView() }
                     
                 }.padding([.horizontal, .bottom])
                 
@@ -95,8 +95,8 @@ struct ImageTransferStyleView: View {
                     ImagePicker(image: self.$pickedImage)
                 }
                 
-            }.background(LinearGradient(gradient: Gradient(colors: [Color(hex: startColor), Color(hex: endColor)]), startPoint: .top, endPoint: .bottom))
-        }.navigationBarColor(backgroundColor: UIColor(hex: startColor), titleColor: .white)
+            }.background(Color.primaryBackgroundColor)
+        }.navigationBarColor(backgroundColor: UIColor(hex: startColor), buttonColor: .white)
         
     }
     

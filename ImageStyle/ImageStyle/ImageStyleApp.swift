@@ -12,7 +12,9 @@ struct ImageStyleApp: App {
     @ObservedObject var alert = AlertController.shared
     let startColor = "#FEA2A2"
     let endColor = "#E5CF7E"
-   
+    init() {
+        UITextView.appearance().backgroundColor = .white
+        }
     var body: some Scene {
         WindowGroup {
             ImageTransferStyleView()

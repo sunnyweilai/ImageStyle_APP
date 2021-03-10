@@ -17,6 +17,14 @@ enum StyleModelType: String {
     case koreanStyle =  "KoreanStyle"
     case peachBlushStyle = "PeachBlushStyle"
 
+    func toFilterName() -> String {
+        switch self {
+        case .koreanStyle:
+            return "Beige Daisy"
+        case .peachBlushStyle:
+            return "Peach Blush"
+        }
+    }
 }
 
 class ModelManager: ObservableObject {

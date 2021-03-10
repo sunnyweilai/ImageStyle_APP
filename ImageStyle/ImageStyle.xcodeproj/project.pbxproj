@@ -15,6 +15,11 @@
 		7091665025F1B8840016DC6A /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091664F25F1B8840016DC6A /* UIImageExtension.swift */; };
 		70CE3C3525F3DC72003264CB /* PeachBlushStyle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 70CE3C3425F3DC71003264CB /* PeachBlushStyle.mlmodel */; };
 		70CE3C3A25F40857003264CB /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE3C3925F40857003264CB /* MoodView.swift */; };
+		70EF797A25F85B21004BF5B1 /* Rasa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797525F85B21004BF5B1 /* Rasa-Bold.ttf */; };
+		70EF797B25F85B21004BF5B1 /* Rasa-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797625F85B21004BF5B1 /* Rasa-Medium.ttf */; };
+		70EF797C25F85B21004BF5B1 /* Rasa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797725F85B21004BF5B1 /* Rasa-SemiBold.ttf */; };
+		70EF797D25F85B21004BF5B1 /* Rasa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797825F85B21004BF5B1 /* Rasa-Regular.ttf */; };
+		70EF797E25F85B21004BF5B1 /* Rasa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797925F85B21004BF5B1 /* Rasa-Light.ttf */; };
 		A3483BD625BA1EE200F483F2 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3483BD525BA1EE200F483F2 /* ImageSaver.swift */; };
 		A364563F25BCBCCF0087D5BF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364563E25BCBCCF0087D5BF /* ImageManager.swift */; };
 		A364564825BCC7670087D5BF /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364564725BCC7670087D5BF /* AlertController.swift */; };
@@ -54,6 +59,11 @@
 		7091664F25F1B8840016DC6A /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		70CE3C3425F3DC71003264CB /* PeachBlushStyle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PeachBlushStyle.mlmodel; sourceTree = "<group>"; };
 		70CE3C3925F40857003264CB /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
+		70EF797525F85B21004BF5B1 /* Rasa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-Bold.ttf"; sourceTree = "<group>"; };
+		70EF797625F85B21004BF5B1 /* Rasa-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-Medium.ttf"; sourceTree = "<group>"; };
+		70EF797725F85B21004BF5B1 /* Rasa-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-SemiBold.ttf"; sourceTree = "<group>"; };
+		70EF797825F85B21004BF5B1 /* Rasa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-Regular.ttf"; sourceTree = "<group>"; };
+		70EF797925F85B21004BF5B1 /* Rasa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-Light.ttf"; sourceTree = "<group>"; };
 		A3483BD525BA1EE200F483F2 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		A364563E25BCBCCF0087D5BF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A364564725BCC7670087D5BF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -117,6 +127,18 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		70EF797425F85AFD004BF5B1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				70EF797525F85B21004BF5B1 /* Rasa-Bold.ttf */,
+				70EF797925F85B21004BF5B1 /* Rasa-Light.ttf */,
+				70EF797625F85B21004BF5B1 /* Rasa-Medium.ttf */,
+				70EF797825F85B21004BF5B1 /* Rasa-Regular.ttf */,
+				70EF797725F85B21004BF5B1 /* Rasa-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		A364564625BCC7510087D5BF /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +150,7 @@
 		A3BA729E25A5540D00D0EC40 = {
 			isa = PBXGroup;
 			children = (
+				70EF797425F85AFD004BF5B1 /* Fonts */,
 				7091664325F1B3CA0016DC6A /* Extensions */,
 				7091663225F0403D0016DC6A /* Models */,
 				A3BA72A925A5540D00D0EC40 /* ImageStyle */,
@@ -312,7 +335,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70EF797C25F85B21004BF5B1 /* Rasa-SemiBold.ttf in Resources */,
+				70EF797B25F85B21004BF5B1 /* Rasa-Medium.ttf in Resources */,
 				A3BA72B225A5541600D0EC40 /* Preview Assets.xcassets in Resources */,
+				70EF797A25F85B21004BF5B1 /* Rasa-Bold.ttf in Resources */,
+				70EF797E25F85B21004BF5B1 /* Rasa-Light.ttf in Resources */,
+				70EF797D25F85B21004BF5B1 /* Rasa-Regular.ttf in Resources */,
 				A3BA72AF25A5541600D0EC40 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

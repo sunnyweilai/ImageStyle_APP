@@ -36,7 +36,8 @@ struct SingleMLFilterView: View {
                     }){
             VStack{
                 Spacer()
-                Text("\(styleModel.rawValue)").foregroundColor(.black)
+                Text("\(styleModel.toFilterName())")
+                    .font(.secondaryFont)
                 Spacer().frame(height: 5)
                 Image("\(styleModel.rawValue)Template")
                 .resizable()
