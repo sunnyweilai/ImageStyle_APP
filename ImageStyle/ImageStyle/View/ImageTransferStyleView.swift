@@ -43,9 +43,12 @@ struct ImageTransferStyleView: View {
                                 .saturation(saturationState)
                         }else{
                                 RoundedRectangle(cornerRadius: 10).fill(Color.white).opacity(0.4).frame(height: geo.size.height / 2)
-                                Text("Tap to select your content picture")
-                                    .foregroundColor(.white)
-                                    .font(.headline)
+                            VStack{
+                                Image(systemName: "plus").renderingMode(.template).imageScale(.large)
+                                Text("Tap to select your image")
+                                    .font(.primaryFont)
+                                    
+                            } .foregroundColor(.white)
                         }
                         
                         
