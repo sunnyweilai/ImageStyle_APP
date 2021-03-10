@@ -31,11 +31,11 @@ struct MoodView: View {
                                
                                 
                             
-                        }.frame(minHeight: 150)
+                        }.frame(minHeight: 200)
                         HStack{
-                            Text("Start from here...").font(.hintFont).foregroundColor(Color.gray).opacity(moodText.count > 0 ? 0 : 100)
+                            Text("Wanna say...").font(.hintFont).foregroundColor(Color.gray).opacity(moodText.count > 0 ? 0 : 100).padding(.leading,13)
                             Spacer()
-                        }.frame(height: 40).padding([.leading,.top],5)
+                        }.frame(height: 40)
                     }
                 }.padding([.horizontal, .bottom])
             }.navigationBarTitle(Text("\(dateTransform(date: date))"),displayMode: .inline)

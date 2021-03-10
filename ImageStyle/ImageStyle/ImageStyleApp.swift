@@ -14,6 +14,8 @@ struct ImageStyleApp: App {
     let endColor = "#E5CF7E"
     init() {
         UITextView.appearance().backgroundColor = .white
+        UITextView.appearance().textContainerInset =
+               UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         }
     var body: some Scene {
         WindowGroup {

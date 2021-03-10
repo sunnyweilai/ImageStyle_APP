@@ -34,28 +34,18 @@ struct ImageTransferStyleView: View {
             GeometryReader{ geo in
                 VStack{
                     ZStack{
-                        if styledImage != nil {
-                            Image(uiImage: styledImage!)
+                        if styledImage != nil || pickedImage != nil {
+                            Image(uiImage: (styledImage == nil ? pickedImage : styledImage) ?? UIImage())
                                 .resizable()
                                 .scaledToFit()
                                 .brightness(brightnessState)
                                 .contrast(constrastState)
                                 .saturation(saturationState)
                         }else{
-                            if contentImage != nil{
-                                contentImage?
-                                    .resizable()
-                                    .scaledToFit()
-                                    .brightness(brightnessState)
-                                    .contrast(constrastState)
-                                    .saturation(saturationState)
-                            }
-                            else{
                                 RoundedRectangle(cornerRadius: 10).fill(Color.white).opacity(0.4).frame(height: geo.size.height / 2)
                                 Text("Tap to select your content picture")
                                     .foregroundColor(.white)
                                     .font(.headline)
-                            }
                         }
                         
                         
@@ -68,11 +58,20 @@ struct ImageTransferStyleView: View {
                    
                     TabView{
                         
-                        ImageMLFilterView(inputImage: pickedImage).frame(alignment: .leading).tabItem{Text("Style")}.padding(.leading, 10).background(Color(hex: endColor))
-                        ImageEditView(constrastState: $constrastState, brightnessState: $brightnessState, saturationState: $saturationState).tabItem{Text("Edit")}.padding(.horizontal, 10).background(Color(hex: endColor))
-                    }.onAppear() {
+                        ImageMLFilterView(inputImage: pickedImage).frame(alignment: .leading)
+                            .tabItem{
+                                Image(systemName: "wand.and.stars")
+                                Text("Style")}.padding(.leading, 10).background(Color(hex: endColor))
+                        ImageEditView(constrastState: $constrastState, brightnessState: $brightnessState, saturationState: $saturationState).tabItem{
+                            Image(systemName: "slider.vertical.3")
+                            Text("Edit")}.padding(.horizontal, 10).background(Color(hex: endColor))
+                    }
+                    .onAppear() {
                         
                         UITabBar.appearance().barTintColor = UIColor(hex: endColor)
+                        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.init(name: "Rasa-Regular", size: 12)! ], for: .normal)
+                        UITabBar.appearance().clipsToBounds = true
+                        UITabBar.appearance().layer.borderColor = UIColor.clear.cgColor
                        
                         
                     }
@@ -81,7 +80,7 @@ struct ImageTransferStyleView: View {
                     
                     
                     
-                    NavigationLink(destination: MoodView(pickedImage: Image(uiImage: pickedImage ?? UIImage())), isActive: $imageIsReady){ EmptyView() }
+                    NavigationLink(destination: MoodView(pickedImage: Image(uiImage: (styledImage == nil ? pickedImage : styledImage) ?? UIImage())), isActive: $imageIsReady){ EmptyView() }
                     
                 }.padding([.horizontal, .bottom])
                 
