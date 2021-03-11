@@ -55,6 +55,58 @@ extension View {
     }
 }
 
+extension Calendar {
+    func generateDates(
+        inside interval: DateInterval,
+        matching components: DateComponents
+    ) -> [Date] {
+        var dates: [Date] = []
+        dates.append(interval.start)
+
+        enumerateDates(
+            startingAfter: interval.start,
+            matching: components,
+            matchingPolicy: .nextTime
+        ) { date, _, stop in
+            if let date = date {
+                if date < interval.end {
+                    dates.append(date)
+                } else {
+                    stop = true
+                }
+            }
+        }
+
+        return dates
+    }
+}
+
+ extension DateFormatter {
+    static var month: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM"
+        return formatter
+    }
+
+    static var monthAndYear: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM yyyy"
+        return formatter
+    }
+    
+    static var dateAndMonth: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM,d"
+        return formatter
+    }
+    
+    static var dateAndMonthAndYear: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d yyyy"
+        return formatter
+    }
+}
+
 
 extension Font {
     static var primaryFont: Font {
@@ -65,6 +117,9 @@ extension Font {
         }
     static var hintFont:Font {
         return Font.custom("Rasa-Regular", size: 17)
+    }
+    static var titleFont:Font {
+        return Font.custom("Rasa-Bold", size: 20)
     }
 }
 

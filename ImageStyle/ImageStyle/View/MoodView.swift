@@ -10,8 +10,11 @@ import SwiftUI
 struct MoodView: View {
     @ObservedObject var model = ModelManager.shared
     @State var moodText = ""
+    @State var textIsChanged = false
+    @State var moodIsReady = false
     var pickedImage: Image
     let date = Date()
+    let format = DateFormatter.dateAndMonth
     var body: some View {
         GeometryReader{ geo in
             
@@ -23,6 +26,10 @@ struct MoodView: View {
                     ZStack(alignment: .top){
                         HStack{
                             TextEditor(text: $moodText)
+                                .onChange(of: moodText, perform: {_ in
+                                    textIsChanged = true
+                                })
+                                .font(.primaryFont)
                                 .keyboardType(.asciiCapable)
                                 .lineSpacing(5)
                                 .opacity(0.5)
@@ -38,15 +45,24 @@ struct MoodView: View {
                         }.frame(height: 40)
                     }
                 }.padding([.horizontal, .bottom])
-            }.navigationBarTitle(Text("\(dateTransform(date: date))"),displayMode: .inline)
+                NavigationLink(destination: CalendarRootView(inputImage: pickedImage, inputDate: date), isActive: $moodIsReady){ EmptyView() }
+            }.navigationBarTitle(Text(format.string(from: date)),displayMode: .inline)
+            .navigationBarItems(trailing: textIsChanged ? (Button(action: {
+                textIsChanged = false
+                resignFirstResponder()
+            }){
+                Image(systemName: "checkmark")
+                }) : (Button(action: {
+                    moodIsReady = true
+                }){
+                    Image(systemName: "chevron.right")
+                }))
         }.background(LinearGradient.primaryBackgroundColor)
     }
+
     
-    func dateTransform(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM,d"
-        let dateString = formatter.string(from: date)
-        return dateString
+    func resignFirstResponder() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
 

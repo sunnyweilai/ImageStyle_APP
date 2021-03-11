@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		705E098625F5BEA500E05A84 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E098525F5BEA500E05A84 /* ColorExtension.swift */; };
 		707400DF25F6CA0D001E1F70 /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707400DE25F6CA0D001E1F70 /* SwiftUIExtension.swift */; };
+		70833C8D25F91AA8001EE986 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70833C8C25F91AA8001EE986 /* CalendarView.swift */; };
 		7091663425F0405A0016DC6A /* KoreanStyle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */; };
 		7091663925F16F3B0016DC6A /* ImageMLFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */; };
 		7091663F25F190A20016DC6A /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091663E25F190A20016DC6A /* ModelManager.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		705E098525F5BEA500E05A84 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		707400DE25F6CA0D001E1F70 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtension.swift; sourceTree = "<group>"; };
+		70833C8C25F91AA8001EE986 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = KoreanStyle.mlmodel; sourceTree = "<group>"; };
 		7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMLFilterView.swift; sourceTree = "<group>"; };
 		7091663E25F190A20016DC6A /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				A3FB1E8E25BBC6270033DF5E /* ImageTransferStyleView.swift */,
 				7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */,
 				70CE3C3925F40857003264CB /* MoodView.swift */,
+				70833C8C25F91AA8001EE986 /* CalendarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 			files = (
 				707400DF25F6CA0D001E1F70 /* SwiftUIExtension.swift in Sources */,
 				A3BA72DA25A5551900D0EC40 /* ImagePicker.swift in Sources */,
+				70833C8D25F91AA8001EE986 /* CalendarView.swift in Sources */,
 				A3BA72AD25A5540D00D0EC40 /* ImageFilterStyleView.swift in Sources */,
 				70CE3C3A25F40857003264CB /* MoodView.swift in Sources */,
 				A3BA72AB25A5540D00D0EC40 /* ImageStyleApp.swift in Sources */,

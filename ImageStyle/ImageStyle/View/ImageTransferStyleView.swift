@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  ImageStyle
 //
-//  Created by sunnywei on 2021-01-22.
+//  Created by Lai Wei on 2021-01-22.
 //
 
 import SwiftUI
@@ -34,15 +34,17 @@ struct ImageTransferStyleView: View {
             GeometryReader{ geo in
                 VStack{
                     ZStack{
+                        RoundedRectangle(cornerRadius: 10).fill(Color.white).opacity(0.4).frame(height: geo.size.height / 2)
                         if styledImage != nil || pickedImage != nil {
                             Image(uiImage: (styledImage == nil ? pickedImage : styledImage) ?? UIImage())
                                 .resizable()
                                 .scaledToFit()
+                                .frame(height: geo.size.height / 2)
                                 .brightness(brightnessState)
                                 .contrast(constrastState)
                                 .saturation(saturationState)
                         }else{
-                                RoundedRectangle(cornerRadius: 10).fill(Color.white).opacity(0.4).frame(height: geo.size.height / 2)
+                                
                             VStack{
                                 Image(systemName: "plus").renderingMode(.template).imageScale(.large)
                                 Text("Tap to select your image")
@@ -122,17 +124,17 @@ struct ImageEditView: View {
         VStack{
             Spacer()
             HStack{
-                Text("Constrast")
+                Text("Constrast").font(.secondaryFont)
                 Slider(value: $constrastState, in: 0...1).accentColor(.white)
             }
             Spacer()
             HStack{
-                Text("Brightness")
+                Text("Brightness").font(.secondaryFont)
                 Slider(value: $brightnessState, in: 0...1).accentColor(.white)
             }
             Spacer()
             HStack{
-                Text("Saturation")
+                Text("Saturation").font(.secondaryFont)
                 Slider(value: $saturationState, in: 0...1).accentColor(.white)
             }
             Spacer()
