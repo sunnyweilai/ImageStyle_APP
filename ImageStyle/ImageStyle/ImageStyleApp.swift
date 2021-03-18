@@ -10,6 +10,7 @@ import SwiftUI
 @main
 struct ImageStyleApp: App {
     @ObservedObject var alert = AlertController.shared
+    @ObservedObject var image = ImageManager.shared
     let startColor = "#FEA2A2"
     let endColor = "#E5CF7E"
     init() {
@@ -19,7 +20,8 @@ struct ImageStyleApp: App {
         }
     var body: some Scene {
         WindowGroup {
-            ImageTransferStyleView()
+            CalendarRootView(inputImage: Image(systemName: "suit.heart"), inputDate: Date())
+//            ImageTransferStyleView()
             .alert(isPresented: self.$alert.presentAlert){ () -> Alert in
                 if self.alert.type == .confirm {
                     return Alert(title: Text(alert.title ?? ""), message: Text(alert.message), primaryButton: Alert.Button.default(Text(alert.confirmButtonText), action: {

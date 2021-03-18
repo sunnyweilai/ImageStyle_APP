@@ -19,6 +19,12 @@ class ImageManager: ObservableObject {
     
     /// this is used to verify if both images are selected to go to next step
     @Published var pubImagesAreReady = false
+
+    
+    public var snapImage : UIImage?
+    
+    /// this is used to verify if the share image is ready
+    @Published var pubSnapImageReady = false
     
     public func ImagesAreReady(_ contentImg: Image?) -> Bool{
         var isReady = true

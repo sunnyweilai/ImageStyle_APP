@@ -11,7 +11,7 @@ struct CalendarRootView: View {
     @Environment(\.calendar) var calendar
     
     
-    
+    @ObservedObject var image  = ImageManager.shared
     var inputImage: Image
     var inputDate: Date
     let dateFormat = DateFormatter.dateAndMonthAndYear
@@ -34,11 +34,10 @@ struct CalendarRootView: View {
                     .overlay(
                         Text(String(self.calendar.component(.day, from: date))).foregroundColor(inputDateString  == dateFormat.string(from: date) ? .white : .black)
                     )
-                
-                
             }.navigationBarHidden(true)
-            .padding(.horizontal, 10)
-        }.background(LinearGradient.primaryBackgroundColor)
+            
+        }.padding(.horizontal, 10)
+        .background(LinearGradient.primaryBackgroundColor)
     }
 }
 
@@ -67,17 +66,17 @@ struct CalendarView<DateView>: View where DateView: View {
         )
     }
     
-   
+    
     var body: some View {
         let inputMonth = calendar.dateComponents([.month], from: inputDate).month
-      
+        
         ScrollView(.vertical, showsIndicators: false) {
             ScrollViewReader { value in
                 VStack {
                     ForEach(months, id: \.self) { month in
-                       
-                                MonthView(month: month, content: self.content)
-                                
+                        
+                        MonthView(month: month, content: self.content).frame(height: UIScreen.main.bounds.size.height)
+                        
                     }
                     
                 }.onAppear{
@@ -113,20 +112,65 @@ struct MonthView<DateView>: View where DateView: View {
             matching: DateComponents(hour: 0, minute: 0, second: 0, weekday: 1)
         )
     }
+    @ObservedObject var image  = ImageManager.shared
+    
     
     var body: some View {
-       
+        
         VStack {
             Spacer().frame(height:20)
-            Text(monthFormat.string(from: month)).font(.titleFont)
+            ZStack{
+                Spacer()
+                Text(monthFormat.string(from: month)).font(.titleFont)
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        image.pubSnapImageReady
+                            = true
+                        let snapImage = body.snapshot()
+                        image.snapImage = snapImage
+                        
+//                        shareAction()
+                    }){
+                        Image(systemName: "square.and.arrow.up")
+                    }.padding(.trailing, 10).foregroundColor(image.pubSnapImageReady ? .clear : .black)
+                    
+                }}
             Spacer().frame(height:20)
             ForEach(weeks, id: \.self) { week in
                 WeekView(week: week, content: self.content).background(Color.white.opacity(0.5))
                 Spacer().frame(height:10)
             }
             Spacer()
+        } .sheet(isPresented: $image.pubSnapImageReady){
+            
+            if image.snapImage != nil {
+                Image(uiImage: image.snapImage!).resizable().aspectRatio(contentMode: .fit)
+                   .padding()
+            }
+            
+            Button(action: {
+                guard let snapImage = image.snapImage else {
+                    return
+                }
+                
+            let imageSaver = ImageSaver()
+                imageSaver.writeToPhotoAlbum(image: snapImage)
+            }){
+                Text("Save").font(.primaryFont)
+            }.frame(width: 150, height: 50).foregroundColor(.black)
+            
         }
         
+        
+    }
+    
+    func shareAction() {
+        /// THIS SHOULD BE THE APP LINK IN STORE
+        let url = URL(string: "http://apple.com")
+        let av = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
+        
+        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
 }
 
@@ -164,11 +208,9 @@ struct WeekView<DateView>: View where DateView: View {
                     } else {
                         self.content(date).hidden()
                     }
-                    
                 }
             }
         }
-        
         
     }
 }
