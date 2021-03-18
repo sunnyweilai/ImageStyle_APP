@@ -19,12 +19,14 @@ class ImageManager: ObservableObject {
     
     /// this is used to verify if both images are selected to go to next step
     @Published var pubImagesAreReady = false
-
-    
-    public var snapImage : UIImage?
     
     /// this is used to verify if the share image is ready
     @Published var pubSnapImageReady = false
+    
+    @Published var pubSnapImageLastUpdated = Date().timeIntervalSince1970
+
+    public var snapImage : UIImage?
+    public var hidingShareButton = false
     
     public func ImagesAreReady(_ contentImg: Image?) -> Bool{
         var isReady = true
@@ -34,5 +36,19 @@ class ImageManager: ObservableObject {
             return isReady
         }
         return isReady
+    }
+    
+    
+    public func didDismiss() {
+        guard let _ =  self.snapImage else {
+            return
+        }
+        self.snapImage = nil
+        self.hidingShareButton = false
+        
+        DispatchQueue.main.async {
+            self.pubSnapImageLastUpdated = Date().timeIntervalSince1970
+            self.pubSnapImageReady = false
+        }
     }
 }

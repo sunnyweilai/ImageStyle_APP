@@ -30,7 +30,7 @@ struct ImageTransferStyleView: View {
     var body: some View {
         let styledImage = model.styledImage
         
-        return NavigationView{
+        return 
             GeometryReader{ geo in
                 VStack{
                     ZStack{
@@ -100,7 +100,7 @@ struct ImageTransferStyleView: View {
                 }
                 
             }.background(Color.primaryBackgroundColor)
-        }.navigationBarColor(backgroundColor: UIColor(hex: startColor), buttonColor: .white)
+        
         
     }
     

@@ -2,7 +2,7 @@
 //  ImageStyleApp.swift
 //  ImageStyle
 //
-//  Created by sunnywei on 2021-01-05.
+//  Created by Lai Wei on 2021-01-05.
 //
 
 import SwiftUI
@@ -20,8 +20,9 @@ struct ImageStyleApp: App {
         }
     var body: some Scene {
         WindowGroup {
-            CalendarRootView(inputImage: Image(systemName: "suit.heart"), inputDate: Date())
-//            ImageTransferStyleView()
+            NavigationView{
+            ImageTransferStyleView()
+        }.navigationBarColor(backgroundColor: UIColor(hex: startColor), buttonColor: .white)
             .alert(isPresented: self.$alert.presentAlert){ () -> Alert in
                 if self.alert.type == .confirm {
                     return Alert(title: Text(alert.title ?? ""), message: Text(alert.message), primaryButton: Alert.Button.default(Text(alert.confirmButtonText), action: {

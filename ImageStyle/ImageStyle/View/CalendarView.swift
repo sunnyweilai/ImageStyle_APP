@@ -10,31 +10,44 @@ import SwiftUI
 struct CalendarRootView: View {
     @Environment(\.calendar) var calendar
     
-    
     @ObservedObject var image  = ImageManager.shared
     var inputImage: Image
     var inputDate: Date
     let dateFormat = DateFormatter.dateAndMonthAndYear
-    
+    @State var isWithImage = false
+    @State var isTapped = false
     private var year: DateInterval {
         calendar.dateInterval(of: .year, for: inputDate)!
     }
+    
     var body: some View {
         let inputDateString = dateFormat.string(from: inputDate)
         
         return GeometryReader{ geo in
             
             CalendarView(inputDate: inputDate, interval: year) { date in
-                Text("30")
-                    .hidden()
+                Button(action: {
+                    isTapped = true
+                    if inputDateString  == dateFormat.string(from: date) {
+                        isWithImage = true
+                    }else {
+                        isWithImage = false
+                    }
+                })
+                    {
+                    Text(String(self.calendar.component(.day, from: date))).foregroundColor(inputDateString  == dateFormat.string(from: date) ? .white : .black)
+                }
                     .frame(width: (geo.size.width - 20)/7, height: (geo.size.width - 20)/7, alignment: .center)
                     .background(inputDateString  == dateFormat.string(from: date) ? inputImage.resizable().aspectRatio(contentMode: .fill) : nil).clipped()
-                    
-                    
-                    .overlay(
-                        Text(String(self.calendar.component(.day, from: date))).foregroundColor(inputDateString  == dateFormat.string(from: date) ? .white : .black)
-                    )
+
+                if isWithImage {
+                    NavigationLink(destination: MoodView(pickedImage: inputImage) , isActive: $isTapped){EmptyView()}.navigationBarHidden(true)
+                } else {
+                    NavigationLink(destination:ImageTransferStyleView(), isActive: $isTapped){EmptyView()}.navigationBarHidden(true)
+                }
+                
             }.navigationBarHidden(true)
+            
             
         }.padding(.horizontal, 10)
         .background(LinearGradient.primaryBackgroundColor)
@@ -112,8 +125,8 @@ struct MonthView<DateView>: View where DateView: View {
             matching: DateComponents(hour: 0, minute: 0, second: 0, weekday: 1)
         )
     }
-    @ObservedObject var image  = ImageManager.shared
-    
+    @ObservedObject var imageManager  = ImageManager.shared
+    @State var hidingshareButton = false
     
     var body: some View {
         
@@ -125,15 +138,22 @@ struct MonthView<DateView>: View where DateView: View {
                 HStack{
                     Spacer()
                     Button(action: {
-                        image.pubSnapImageReady
-                            = true
-                        let snapImage = body.snapshot()
-                        image.snapImage = snapImage
+                       
+                        DispatchQueue.main.async {
+                            // hide the share button first
+                            imageManager.hidingShareButton = true
+                            
+                            // do the screenshot of the page
+                            let snapImage = body.snapshot()
+                            imageManager.snapImage = snapImage
+                            
+                            
+                        }
                         
 //                        shareAction()
                     }){
                         Image(systemName: "square.and.arrow.up")
-                    }.padding(.trailing, 10).foregroundColor(image.pubSnapImageReady ? .clear : .black)
+                    }.padding(.trailing, 10).foregroundColor(imageManager.hidingShareButton ? .clear : .black)
                     
                 }}
             Spacer().frame(height:20)
@@ -142,28 +162,15 @@ struct MonthView<DateView>: View where DateView: View {
                 Spacer().frame(height:10)
             }
             Spacer()
-        } .sheet(isPresented: $image.pubSnapImageReady){
-            
-            if image.snapImage != nil {
-                Image(uiImage: image.snapImage!).resizable().aspectRatio(contentMode: .fit)
-                   .padding()
-            }
-            
-            Button(action: {
-                guard let snapImage = image.snapImage else {
-                    return
-                }
-                
-            let imageSaver = ImageSaver()
-                imageSaver.writeToPhotoAlbum(image: snapImage)
-            }){
-                Text("Save").font(.primaryFont)
-            }.frame(width: 150, height: 50).foregroundColor(.black)
-            
+        } .sheet(isPresented: $imageManager.pubSnapImageReady, onDismiss: imageManager.didDismiss){
+            ShareImageView(sharedImage: imageManager.snapImage)
         }
+        
+       
         
         
     }
+   
     
     func shareAction() {
         /// THIS SHOULD BE THE APP LINK IN STORE
@@ -171,6 +178,27 @@ struct MonthView<DateView>: View where DateView: View {
         let av = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
         
         UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
+    }
+}
+
+struct ShareImageView: View {
+    var sharedImage: UIImage?
+    var body: some View{
+        VStack{
+            if sharedImage != nil {
+                Image(uiImage: sharedImage!).resizable().aspectRatio(contentMode: .fit)
+                   .padding()
+            
+            Button(action: {
+            let imageSaver = ImageSaver()
+                imageSaver.writeToPhotoAlbum(image: sharedImage!)
+            }){
+                Text("Save").font(.primaryFont)
+            }.frame(width: 150, height: 50).foregroundColor(.black)
+            }else {
+                Text("Sorry, the view is not ready yet. Please try again later.")
+            }
+        }
     }
 }
 

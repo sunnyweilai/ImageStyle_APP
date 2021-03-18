@@ -18,6 +18,9 @@ class ImageSaver: NSObject{
             print ("\(error.localizedDescription)")
         } else{
             print("success!")
+            
+            //dismiss snapimage sheet
+            ImageManager.shared.didDismiss()
         }
     }
 }

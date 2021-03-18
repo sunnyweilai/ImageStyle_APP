@@ -78,20 +78,16 @@ extension View {
         view.center = backgroundView.center
         
         return renderer.image{ _ in
-            backgroundView.drawHierarchy(in: backgroundView.bounds, afterScreenUpdates: true)
-        }
+            
+                backgroundView.drawHierarchy(in: backgroundView.bounds, afterScreenUpdates: true)
+                // show the sheet
+                ImageManager.shared.pubSnapImageReady
+                    = true
+            }
     }
 }
 
-extension UIView{
-    func asImage() -> UIImage {
-        UIGraphicsBeginImageContext(self.frame.size)
-        self.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return UIImage(cgImage: image!.cgImage!)
-    }
-}
+
 
 extension Calendar {
     func generateDates(
