@@ -13,7 +13,7 @@ struct MoodView: View {
     @State var textIsChanged = false
     @State var moodIsReady = false
     var pickedImage: Image
-    let date = Date()
+    @ObservedObject var mood = MoodManager.shared
     let format = DateFormatter.dateAndMonth
     var body: some View {
         GeometryReader{ geo in
@@ -34,9 +34,6 @@ struct MoodView: View {
                                 .lineSpacing(5)
                                 .opacity(0.5)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                                
-                               
-                                
                             
                         }.frame(minHeight: 200)
                         HStack{
@@ -45,8 +42,18 @@ struct MoodView: View {
                         }.frame(height: 40)
                     }
                 }.padding([.horizontal, .bottom])
-                NavigationLink(destination: CalendarRootView(inputImage: pickedImage, inputDate: date), isActive: $moodIsReady){ EmptyView() }
-            }.navigationBarTitle(Text(format.string(from: date)),displayMode: .inline)
+                NavigationLink(destination: CalendarRootView(inputImage: pickedImage), isActive: $moodIsReady){ EmptyView() }
+            }.navigationBarTitleDisplayMode(.inline)
+            .toolbar{
+                ToolbarItem(placement: .principal){
+                    Button(action: {
+                        mood.pubChangingDate = true
+                    }) {
+                        Text(format.string(from: mood.pubDate)).font(.titleFont)
+                    }.foregroundColor(.white)
+                    
+                }
+            }
             .navigationBarItems(trailing: textIsChanged ? (Button(action: {
                 textIsChanged = false
                 resignFirstResponder()
@@ -58,6 +65,9 @@ struct MoodView: View {
                     Image(systemName: "chevron.right")
                 }))
         }.background(LinearGradient.primaryBackgroundColor)
+        .sheet(isPresented: $mood.pubChangingDate, onDismiss: mood.didDatePickerDismissed){
+            DatePickerView()
+        }
     }
 
     
@@ -66,7 +76,18 @@ struct MoodView: View {
     }
 }
 
+
+struct DatePickerView: View {
+    @ObservedObject var mood = MoodManager.shared
+    var body: some View {
+        DatePicker("Choose My Day", selection: $mood.pubDate, in: ...Date())
+            .datePickerStyle(GraphicalDatePickerStyle())
+            .frame(height: 400)
+    }
+}
+
 struct MoodView_Previews: PreviewProvider {
+     
     static var previews: some View {
         MoodView(pickedImage: Image(""))
     }

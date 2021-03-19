@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		704A94AE260521B2007E980C /* MoodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A94AD260521B2007E980C /* MoodManager.swift */; };
 		705E098625F5BEA500E05A84 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E098525F5BEA500E05A84 /* ColorExtension.swift */; };
 		707400DF25F6CA0D001E1F70 /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707400DE25F6CA0D001E1F70 /* SwiftUIExtension.swift */; };
 		70833C8D25F91AA8001EE986 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70833C8C25F91AA8001EE986 /* CalendarView.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		704A94AD260521B2007E980C /* MoodManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodManager.swift; sourceTree = "<group>"; };
 		705E098525F5BEA500E05A84 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		707400DE25F6CA0D001E1F70 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtension.swift; sourceTree = "<group>"; };
 		70833C8C25F91AA8001EE986 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				A3483BD525BA1EE200F483F2 /* ImageSaver.swift */,
 				A364563E25BCBCCF0087D5BF /* ImageManager.swift */,
 				7091663E25F190A20016DC6A /* ModelManager.swift */,
+				704A94AD260521B2007E980C /* MoodManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				A3BA72AB25A5540D00D0EC40 /* ImageStyleApp.swift in Sources */,
 				A364563F25BCBCCF0087D5BF /* ImageManager.swift in Sources */,
 				705E098625F5BEA500E05A84 /* ColorExtension.swift in Sources */,
+				704A94AE260521B2007E980C /* MoodManager.swift in Sources */,
 				7091665025F1B8840016DC6A /* UIImageExtension.swift in Sources */,
 				7091663925F16F3B0016DC6A /* ImageMLFilterView.swift in Sources */,
 				7091663425F0405A0016DC6A /* KoreanStyle.mlmodel in Sources */,

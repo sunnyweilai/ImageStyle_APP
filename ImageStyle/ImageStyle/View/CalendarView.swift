@@ -11,27 +11,30 @@ struct CalendarRootView: View {
     @Environment(\.calendar) var calendar
     
     @ObservedObject var image  = ImageManager.shared
+    @ObservedObject var mood = MoodManager.shared
+    @ObservedObject var model = ModelManager.shared
     var inputImage: Image
-    var inputDate: Date
     let dateFormat = DateFormatter.dateAndMonthAndYear
     @State var isWithImage = false
     @State var isTapped = false
     private var year: DateInterval {
-        calendar.dateInterval(of: .year, for: inputDate)!
+        calendar.dateInterval(of: .year, for: mood.pubDate)!
     }
     
     var body: some View {
-        let inputDateString = dateFormat.string(from: inputDate)
+        let inputDateString = dateFormat.string(from: mood.pubDate)
         
         return GeometryReader{ geo in
             
-            CalendarView(inputDate: inputDate, interval: year) { date in
+            CalendarView(inputDate: mood.pubDate, interval: year) { date in
                 Button(action: {
                     isTapped = true
+                    mood.pubDate = date
                     if inputDateString  == dateFormat.string(from: date) {
                         isWithImage = true
                     }else {
                         isWithImage = false
+                        model.styledImage = nil
                     }
                 })
                     {
@@ -41,9 +44,9 @@ struct CalendarRootView: View {
                     .background(inputDateString  == dateFormat.string(from: date) ? inputImage.resizable().aspectRatio(contentMode: .fill) : nil).clipped()
 
                 if isWithImage {
-                    NavigationLink(destination: MoodView(pickedImage: inputImage) , isActive: $isTapped){EmptyView()}.navigationBarHidden(true)
+                    NavigationLink(destination: MoodView(pickedImage: inputImage) , isActive: $isTapped){EmptyView()}
                 } else {
-                    NavigationLink(destination:ImageTransferStyleView(), isActive: $isTapped){EmptyView()}.navigationBarHidden(true)
+                    NavigationLink(destination:ImageTransferStyleView(), isActive: $isTapped){EmptyView()}
                 }
                 
             }.navigationBarHidden(true)
@@ -104,7 +107,8 @@ struct CalendarView<DateView>: View where DateView: View {
 
 struct MonthView<DateView>: View where DateView: View {
     @Environment(\.calendar) var calendar
-    
+    @ObservedObject var mood = MoodManager.shared
+    @ObservedObject var image  = ImageManager.shared
     let month: Date
     let content: (Date) -> DateView
     let monthFormat = DateFormatter.month

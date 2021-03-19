@@ -16,11 +16,12 @@ struct ImageTransferStyleView: View {
     
     @ObservedObject var image = ImageManager.shared
     @ObservedObject var model = ModelManager.shared
+    @ObservedObject var mood = MoodManager.shared
     
     @State var constrastState: Double = 1
     @State var brightnessState: Double = 0
     @State var saturationState: Double = 1
-    
+    @State var currentDate = Date()
     let startColor = "#FEA2A2"
     let endColor = "#E5CF7E"
     
