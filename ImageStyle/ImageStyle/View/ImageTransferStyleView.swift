@@ -28,15 +28,14 @@ struct ImageTransferStyleView: View {
         
     }
     var body: some View {
-        let styledImage = model.styledImage
         
         return 
             GeometryReader{ geo in
                 VStack{
                     ZStack{
                         RoundedRectangle(cornerRadius: 10).fill(Color.white).opacity(0.4).frame(height: geo.size.height / 2)
-                        if styledImage != nil || image.pubContentImage != nil {
-                            Image(uiImage: (styledImage == nil ? pickedImage : styledImage) ?? UIImage())
+                        if image.pubContentImage != nil {
+                            image.pubContentImage!
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: geo.size.height / 2)
@@ -76,8 +75,8 @@ struct ImageTransferStyleView: View {
                     .accentColor(.black)
                     .frame(height: 250).clipShape(RoundedRectangle(cornerRadius: 10))
                     
-                    
-                    NavigationLink(destination: MoodView(pickedImage: Image(uiImage: (styledImage == nil ? pickedImage : styledImage) ?? UIImage())), isActive: $imageIsReady){ EmptyView() }
+                
+                  
                     
                 }.padding([.horizontal, .bottom])
                 
@@ -91,6 +90,8 @@ struct ImageTransferStyleView: View {
                     ImagePicker(image: self.$pickedImage)
                 }
                 
+                NavigationLink(destination: MoodView(pickedImage: image.pubContentImage ?? Image(systemName: "plus")), isActive: $imageIsReady){ EmptyView() }
+                
             }.background(Color.primaryBackgroundColor)
         
         
@@ -103,7 +104,7 @@ struct ImageTransferStyleView: View {
         let inputImage = Image(uiImage: pickedImage)
         
         image.pubContentImage = inputImage
-        model.styledImage = nil
+
     }
 }
 

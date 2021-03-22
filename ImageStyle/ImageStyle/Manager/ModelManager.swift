@@ -29,7 +29,6 @@ enum StyleModelType: String {
 
 class ModelManager: ObservableObject {
     
-    var styledImage : UIImage?
     var styleModelGroup: [StyleModelType] = [StyleModelType]()
     
     @Published var contentImageStyleChanged = Date().timeIntervalSince1970
@@ -60,15 +59,16 @@ class ModelManager: ObservableObject {
                     let outputBuffer = result.stylizedImage
                     outputImage = UIImage(pixelBuffer: outputBuffer)
                 }
+                DispatchQueue.main.async{
+                    ImageManager.shared.pubContentImage = Image(uiImage: outputImage ?? UIImage())
+                           }
+                
             }catch {
                 print("wrong")
             }
         }
         
-        DispatchQueue.main.async{
-            shared.styledImage = outputImage
-            shared.contentImageStyleChanged = Date().timeIntervalSince1970
-                   }
+       
         
     }
 
