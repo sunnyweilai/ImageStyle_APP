@@ -35,6 +35,7 @@ struct CalendarRootView: View {
                     }else {
                         isWithImage = false
                         model.styledImage = nil
+                        image.pubContentImage = nil
                     }
                 })
                     {

@@ -17,6 +17,9 @@ class ImageManager: ObservableObject {
         return shared
     }()
     
+    /// this is the content image displayed on the view
+    @Published var pubContentImage: Image?
+    
     /// this is used to verify if both images are selected to go to next step
     @Published var pubImagesAreReady = false
     

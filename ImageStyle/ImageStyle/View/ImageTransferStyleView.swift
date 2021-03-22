@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ImageTransferStyleView: View {
-    @State private var contentImage: Image?
     
     @State private var pickedImage: UIImage?
     @State private var showingImagePicker = false
@@ -36,7 +35,7 @@ struct ImageTransferStyleView: View {
                 VStack{
                     ZStack{
                         RoundedRectangle(cornerRadius: 10).fill(Color.white).opacity(0.4).frame(height: geo.size.height / 2)
-                        if styledImage != nil || pickedImage != nil {
+                        if styledImage != nil || image.pubContentImage != nil {
                             Image(uiImage: (styledImage == nil ? pickedImage : styledImage) ?? UIImage())
                                 .resizable()
                                 .scaledToFit()
@@ -45,16 +44,13 @@ struct ImageTransferStyleView: View {
                                 .contrast(constrastState)
                                 .saturation(saturationState)
                         }else{
-                                
                             VStack{
                                 Image(systemName: "plus").renderingMode(.template).imageScale(.large)
                                 Text("Tap to select your image")
                                     .font(.primaryFont)
                                     
-                            } .foregroundColor(.white)
+                            }.foregroundColor(.white)
                         }
-                        
-                        
                         
                     }.onTapGesture {
                         self.showingImagePicker = true
@@ -63,7 +59,6 @@ struct ImageTransferStyleView: View {
                     Spacer()
                    
                     TabView{
-                        
                         ImageMLFilterView(inputImage: pickedImage).frame(alignment: .leading)
                             .tabItem{
                                 Image(systemName: "wand.and.stars")
@@ -73,17 +68,13 @@ struct ImageTransferStyleView: View {
                             Text("Edit")}.padding(.horizontal, 10).background(Color(hex: endColor))
                     }
                     .onAppear() {
-                        
                         UITabBar.appearance().barTintColor = UIColor(hex: endColor)
                         UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: UIFont.init(name: "Rasa-Regular", size: 12)! ], for: .normal)
                         UITabBar.appearance().clipsToBounds = true
                         UITabBar.appearance().layer.borderColor = UIColor.clear.cgColor
-                       
-                        
                     }
                     .accentColor(.black)
                     .frame(height: 250).clipShape(RoundedRectangle(cornerRadius: 10))
-                    
                     
                     
                     NavigationLink(destination: MoodView(pickedImage: Image(uiImage: (styledImage == nil ? pickedImage : styledImage) ?? UIImage())), isActive: $imageIsReady){ EmptyView() }
@@ -91,7 +82,7 @@ struct ImageTransferStyleView: View {
                 }.padding([.horizontal, .bottom])
                 
                 .navigationBarItems(trailing: Button("Next"){
-                    imageIsReady = self.image.ImagesAreReady(contentImage)
+                    imageIsReady = self.image.ImagesAreReady(image.pubContentImage)
                     
                 })
                 .navigationBarTitle(Text(""), displayMode: .inline)
@@ -110,10 +101,9 @@ struct ImageTransferStyleView: View {
             return
         }
         let inputImage = Image(uiImage: pickedImage)
-        contentImage = inputImage
         
+        image.pubContentImage = inputImage
         model.styledImage = nil
-        
     }
 }
 
@@ -125,7 +115,7 @@ struct ImageEditView: View {
         VStack{
             Spacer()
             HStack{
-                Text("Constrast").font(.secondaryFont)
+                Text("Contrast").font(.secondaryFont)
                 Slider(value: $constrastState, in: 0...1).accentColor(.white)
             }
             Spacer()
