@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>ADAY</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,6 +24,14 @@
 	<true/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>We want to save teh filterd photo</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Rasa-Bold.ttf</string>
+		<string>Rasa-Light.ttf</string>
+		<string>Rasa-Medium.ttf</string>
+		<string>Rasa-Regular.ttf</string>
+		<string>Rasa-SemiBold.ttf</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -40,14 +50,6 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Rasa-Bold.ttf</string>
-		<string>Rasa-Light.ttf</string>
-		<string>Rasa-Medium.ttf</string>
-		<string>Rasa-Regular.ttf</string>
-		<string>Rasa-SemiBold.ttf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
