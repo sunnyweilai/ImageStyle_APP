@@ -11,6 +11,8 @@ import CoreImage.CIFilterBuiltins
 
 struct ImageFilterStyleView: View {
     
+    @ObservedObject var imageManager = ImageManager.shared
+    
     @State private var image: Image?
     @State private var filterIntensity = 0.5
     
@@ -74,8 +76,7 @@ struct ImageFilterStyleView: View {
                             return
                         }
                         
-                    let imageSaver = ImageSaver()
-                        imageSaver.writeToPhotoAlbum(image: processedImage)
+                        imageManager.writeToPhotoAlbum(image: processedImage)
                     }
                 }
             }

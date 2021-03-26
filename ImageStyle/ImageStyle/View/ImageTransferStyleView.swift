@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ImageTransferStyleView: View {
-    
+    @Environment(\.managedObjectContext) var viewContext
     @State private var pickedImage: UIImage?
     @State private var showingImagePicker = false
     @State private var imageIsReady = false
@@ -17,7 +17,7 @@ struct ImageTransferStyleView: View {
     @ObservedObject var model = ModelManager.shared
     @ObservedObject var mood = MoodManager.shared
     
-    @State var constrastState: Double = 1
+    @State var contrastState: Double = 1
     @State var brightnessState: Double = 0
     @State var saturationState: Double = 1
     @State var currentDate = Date()
@@ -35,12 +35,12 @@ struct ImageTransferStyleView: View {
                     ZStack{
                         RoundedRectangle(cornerRadius: 10).fill(Color.white).opacity(0.4).frame(height: geo.size.height / 2)
                         if image.pubContentImage != nil {
-                            image.pubContentImage!
+                            Image(uiImage: UIImage(data: image.pubContentImage!)!)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: geo.size.height / 2)
                                 .brightness(brightnessState)
-                                .contrast(constrastState)
+                                .contrast(contrastState)
                                 .saturation(saturationState)
                         }else{
                             VStack{
@@ -62,7 +62,7 @@ struct ImageTransferStyleView: View {
                             .tabItem{
                                 Image(systemName: "wand.and.stars")
                                 Text("Style")}.padding(.leading, 10).background(Color(hex: endColor))
-                        ImageEditView(constrastState: $constrastState, brightnessState: $brightnessState, saturationState: $saturationState).tabItem{
+                        ImageEditView(constrastState: $contrastState, brightnessState: $brightnessState, saturationState: $saturationState).tabItem{
                             Image(systemName: "slider.vertical.3")
                             Text("Edit")}.padding(.horizontal, 10).background(Color(hex: endColor))
                     }
@@ -90,7 +90,7 @@ struct ImageTransferStyleView: View {
                     ImagePicker(image: self.$pickedImage)
                 }
                 
-                NavigationLink(destination: MoodView(pickedImage: image.pubContentImage ?? Image(systemName: "plus")), isActive: $imageIsReady){ EmptyView() }
+                NavigationLink(destination: MoodView(pickedImage: image.pubContentImage ?? Data()).environment(\.managedObjectContext, self.viewContext), isActive: $imageIsReady){ EmptyView() }
                 
             }.background(Color.primaryBackgroundColor)
         
@@ -101,9 +101,8 @@ struct ImageTransferStyleView: View {
         guard let pickedImage = pickedImage else{
             return
         }
-        let inputImage = Image(uiImage: pickedImage)
         
-        image.pubContentImage = inputImage
+        image.pubContentImage = pickedImage.jpegData(compressionQuality: 1.0)
 
     }
 }

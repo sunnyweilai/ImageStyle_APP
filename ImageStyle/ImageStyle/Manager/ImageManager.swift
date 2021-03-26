@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import UIKit
 
 class ImageManager: ObservableObject {
     
@@ -18,7 +19,7 @@ class ImageManager: ObservableObject {
     }()
     
     /// this is the content image displayed on the view
-    @Published var pubContentImage: Image?
+    @Published var pubContentImage: Data?
     
     /// this is used to verify if both images are selected to go to next step
     @Published var pubImagesAreReady = false
@@ -31,7 +32,7 @@ class ImageManager: ObservableObject {
     public var snapImage : UIImage?
     public var hidingShareButton = false
     
-    public func ImagesAreReady(_ contentImg: Image?) -> Bool{
+    public func ImagesAreReady(_ contentImg: Data?) -> Bool{
         var isReady = true
         guard let  _ = contentImg else {
             AlertController.presentAlert(title: nil, message: "Please select the image")
@@ -39,6 +40,21 @@ class ImageManager: ObservableObject {
             return isReady
         }
         return isReady
+    }
+    
+    func writeToPhotoAlbum(image: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(image, self, #selector(saveError),nil)
+    }
+    
+    @objc func saveError(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let error = error {
+            print ("\(error.localizedDescription)")
+        } else{
+            print("success!")
+            
+            //dismiss snapimage sheet
+            ImageManager.shared.didDismiss()
+        }
     }
     
     

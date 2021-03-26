@@ -60,7 +60,7 @@ class ModelManager: ObservableObject {
                     outputImage = UIImage(pixelBuffer: outputBuffer)
                 }
                 DispatchQueue.main.async{
-                    ImageManager.shared.pubContentImage = Image(uiImage: outputImage ?? UIImage())
+                    ImageManager.shared.pubContentImage = outputImage?.jpegData(compressionQuality: 1.0)
                            }
                 
             }catch {

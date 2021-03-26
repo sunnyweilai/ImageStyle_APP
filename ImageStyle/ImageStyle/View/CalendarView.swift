@@ -6,17 +6,29 @@
 //
 
 import SwiftUI
+import CoreData
+
 
 struct CalendarRootView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    @FetchRequest(entity:CoreDataSaving.entity(), sortDescriptors:[
+        NSSortDescriptor(keyPath: \CoreDataSaving.dayimage, ascending: true),
+        NSSortDescriptor(keyPath: \CoreDataSaving.daydescription, ascending: true),
+        NSSortDescriptor(keyPath: \CoreDataSaving.daydate, ascending: true)
+    ]
+    ) var coreDataSavings : FetchedResults<CoreDataSaving>
     @Environment(\.calendar) var calendar
     
-    @ObservedObject var image  = ImageManager.shared
+    @ObservedObject var imageManager  = ImageManager.shared
     @ObservedObject var mood = MoodManager.shared
     @ObservedObject var model = ModelManager.shared
-    var inputImage: Image
-    let dateFormat = DateFormatter.dateAndMonthAndYear
+    
     @State var isWithImage = false
     @State var isTapped = false
+    
+    @State var inputImage: Data
+    let dateFormat = DateFormatter.dateAndMonthAndYear
+    
     private var year: DateInterval {
         calendar.dateInterval(of: .year, for: mood.pubDate)!
     }
@@ -25,35 +37,55 @@ struct CalendarRootView: View {
         let inputDateString = dateFormat.string(from: mood.pubDate)
         
         return GeometryReader{ geo in
-            
             CalendarView(inputDate: mood.pubDate, interval: year) { date in
                 Button(action: {
                     isTapped = true
                     mood.pubDate = date
+                    imageManager.pubContentImage = nil
                     if inputDateString  == dateFormat.string(from: date) {
                         isWithImage = true
                     }else {
                         isWithImage = false
-                        image.pubContentImage = nil
+                        
                     }
                 })
-                    {
+                {
                     Text(String(self.calendar.component(.day, from: date))).foregroundColor(inputDateString  == dateFormat.string(from: date) ? .white : .black)
                 }
-                    .frame(width: (geo.size.width - 20)/7, height: (geo.size.width - 20)/7, alignment: .center)
-                    .background(inputDateString  == dateFormat.string(from: date) ? inputImage.resizable().aspectRatio(contentMode: .fill) : nil).clipped()
-
+                .frame(width: (geo.size.width - 20)/7, height: (geo.size.width - 20)/7, alignment: .center)
+//                .background(inputDateString  == dateFormat.string(from: date) ?  Image(uiImage: UIImage(data: inputImage)!).resizable().aspectRatio(contentMode: .fill) : nil).clipped()
+                .background(Image(uiImage: UIImage(data:(addDayImage(currentDate: date, dataSet: coreDataSavings))) ?? UIImage()).resizable().aspectRatio(contentMode: .fill)).clipped()
                 if isWithImage {
-                    NavigationLink(destination: MoodView(pickedImage: inputImage) , isActive: $isTapped){EmptyView()}
+                    NavigationLink(destination: MoodView(pickedImage: inputImage).environment(\.managedObjectContext, self.viewContext), isActive: $isTapped){EmptyView()}
                 } else {
-                    NavigationLink(destination:ImageTransferStyleView(), isActive: $isTapped){EmptyView()}
+                    NavigationLink(destination:ImageTransferStyleView().environment(\.managedObjectContext, self.viewContext), isActive: $isTapped){EmptyView()}
                 }
                 
             }.navigationBarHidden(true)
             
-            
         }.padding(.horizontal, 10)
         .background(LinearGradient.primaryBackgroundColor)
+    }
+    
+    func addDayImage(currentDate: Date, dataSet: FetchedResults<CoreDataSaving>) -> Data {
+        var dayImageBackground : Data = .init(count : 0)
+        if dataSet.count > 0 {
+        for saving in dataSet {
+            guard let savingDate = saving.daydate else {
+                return dayImageBackground
+            }
+            if  dateFormat.string(from:savingDate) == dateFormat.string(from:currentDate){
+                guard let dayImage = saving.dayimage else {
+                    return dayImageBackground
+                }
+                dayImageBackground =  dayImage
+                break
+                
+            }
+        }
+        }
+        return dayImageBackground
+        
     }
 }
 
@@ -106,12 +138,14 @@ struct CalendarView<DateView>: View where DateView: View {
 }
 
 struct MonthView<DateView>: View where DateView: View {
+    
     @Environment(\.calendar) var calendar
     @ObservedObject var mood = MoodManager.shared
     @ObservedObject var image  = ImageManager.shared
     let month: Date
     let content: (Date) -> DateView
     let monthFormat = DateFormatter.month
+    
     init(
         month: Date,
         @ViewBuilder content: @escaping (Date) -> DateView
@@ -142,7 +176,7 @@ struct MonthView<DateView>: View where DateView: View {
                 HStack{
                     Spacer()
                     Button(action: {
-                       
+                        
                         DispatchQueue.main.async {
                             // hide the share button first
                             imageManager.hidingShareButton = true
@@ -154,7 +188,7 @@ struct MonthView<DateView>: View where DateView: View {
                             
                         }
                         
-//                        shareAction()
+                        //                        shareAction()
                     }){
                         Image(systemName: "square.and.arrow.up")
                     }.padding(.trailing, 10).foregroundColor(imageManager.hidingShareButton ? .clear : .black)
@@ -170,11 +204,11 @@ struct MonthView<DateView>: View where DateView: View {
             ShareImageView(sharedImage: imageManager.snapImage)
         }
         
-       
+        
         
         
     }
-   
+    
     
     func shareAction() {
         /// THIS SHOULD BE THE APP LINK IN STORE
@@ -186,19 +220,19 @@ struct MonthView<DateView>: View where DateView: View {
 }
 
 struct ShareImageView: View {
+    @ObservedObject var imageManager = ImageManager.shared
     var sharedImage: UIImage?
     var body: some View{
         VStack{
             if sharedImage != nil {
                 Image(uiImage: sharedImage!).resizable().aspectRatio(contentMode: .fit)
-                   .padding()
-            
-            Button(action: {
-            let imageSaver = ImageSaver()
-                imageSaver.writeToPhotoAlbum(image: sharedImage!)
-            }){
-                Text("Save").font(.primaryFont)
-            }.frame(width: 150, height: 50).foregroundColor(.black)
+                    .padding()
+                
+                Button(action: {
+                    imageManager.writeToPhotoAlbum(image: sharedImage!)
+                }){
+                    Text("Save").font(.primaryFont)
+                }.frame(width: 150, height: 50).foregroundColor(.black)
             }else {
                 Text("Sorry, the view is not ready yet. Please try again later.")
             }
@@ -207,10 +241,12 @@ struct ShareImageView: View {
 }
 
 struct WeekView<DateView>: View where DateView: View {
+    
     @Environment(\.calendar) var calendar
     
     let week: Date
     let content: (Date) -> DateView
+    
     
     init(
         week: Date,
@@ -230,6 +266,8 @@ struct WeekView<DateView>: View where DateView: View {
         )
     }
     
+    
+    
     var body: some View {
         
         HStack (spacing:0){
@@ -237,6 +275,7 @@ struct WeekView<DateView>: View where DateView: View {
                 HStack(spacing:0) {
                     if self.calendar.isDate(self.week, equalTo: date, toGranularity: .month) {
                         self.content(date).font(.secondaryFont)
+                        
                     } else {
                         self.content(date).hidden()
                     }
@@ -244,7 +283,10 @@ struct WeekView<DateView>: View where DateView: View {
             }
         }
         
+        
     }
+    
+    
 }
 
 //struct CalendarView_Previews: PreviewProvider {

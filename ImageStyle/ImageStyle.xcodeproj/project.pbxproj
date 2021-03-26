@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		704A94AE260521B2007E980C /* MoodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A94AD260521B2007E980C /* MoodManager.swift */; };
 		705E098625F5BEA500E05A84 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E098525F5BEA500E05A84 /* ColorExtension.swift */; };
+		7072FA512608EC79002D95F6 /* CoreDataSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7072FA4F2608EC79002D95F6 /* CoreDataSaving.xcdatamodeld */; };
+		7072FA572608EE19002D95F6 /* CoreDataSaving+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FA552608EE19002D95F6 /* CoreDataSaving+CoreDataClass.swift */; };
+		7072FA582608EE19002D95F6 /* CoreDataSaving+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FA562608EE19002D95F6 /* CoreDataSaving+CoreDataProperties.swift */; };
+		7072FA642608FF96002D95F6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FA632608FF96002D95F6 /* CoreDataManager.swift */; };
 		707400DF25F6CA0D001E1F70 /* SwiftUIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707400DE25F6CA0D001E1F70 /* SwiftUIExtension.swift */; };
 		70833C8D25F91AA8001EE986 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70833C8C25F91AA8001EE986 /* CalendarView.swift */; };
 		7091663425F0405A0016DC6A /* KoreanStyle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */; };
@@ -22,7 +26,6 @@
 		70EF797C25F85B21004BF5B1 /* Rasa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797725F85B21004BF5B1 /* Rasa-SemiBold.ttf */; };
 		70EF797D25F85B21004BF5B1 /* Rasa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797825F85B21004BF5B1 /* Rasa-Regular.ttf */; };
 		70EF797E25F85B21004BF5B1 /* Rasa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797925F85B21004BF5B1 /* Rasa-Light.ttf */; };
-		A3483BD625BA1EE200F483F2 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3483BD525BA1EE200F483F2 /* ImageSaver.swift */; };
 		A364563F25BCBCCF0087D5BF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364563E25BCBCCF0087D5BF /* ImageManager.swift */; };
 		A364564825BCC7670087D5BF /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364564725BCC7670087D5BF /* AlertController.swift */; };
 		A3BA72AB25A5540D00D0EC40 /* ImageStyleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA72AA25A5540D00D0EC40 /* ImageStyleApp.swift */; };
@@ -55,6 +58,10 @@
 /* Begin PBXFileReference section */
 		704A94AD260521B2007E980C /* MoodManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodManager.swift; sourceTree = "<group>"; };
 		705E098525F5BEA500E05A84 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		7072FA502608EC79002D95F6 /* CoreDataSave.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataSave.xcdatamodel; sourceTree = "<group>"; };
+		7072FA552608EE19002D95F6 /* CoreDataSaving+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataSaving+CoreDataClass.swift"; path = "ImageStyle/CoreData/CoreDataSaving+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		7072FA562608EE19002D95F6 /* CoreDataSaving+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataSaving+CoreDataProperties.swift"; path = "ImageStyle/CoreData/CoreDataSaving+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		7072FA632608FF96002D95F6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		707400DE25F6CA0D001E1F70 /* SwiftUIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtension.swift; sourceTree = "<group>"; };
 		70833C8C25F91AA8001EE986 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		7091663325F0405A0016DC6A /* KoreanStyle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = KoreanStyle.mlmodel; sourceTree = "<group>"; };
@@ -68,7 +75,6 @@
 		70EF797725F85B21004BF5B1 /* Rasa-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-SemiBold.ttf"; sourceTree = "<group>"; };
 		70EF797825F85B21004BF5B1 /* Rasa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-Regular.ttf"; sourceTree = "<group>"; };
 		70EF797925F85B21004BF5B1 /* Rasa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-Light.ttf"; sourceTree = "<group>"; };
-		A3483BD525BA1EE200F483F2 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		A364563E25BCBCCF0087D5BF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A364564725BCC7670087D5BF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		A3BA72A725A5540D00D0EC40 /* ImageStyle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageStyle.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +118,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7072FA5C2608EE51002D95F6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				7072FA552608EE19002D95F6 /* CoreDataSaving+CoreDataClass.swift */,
+				7072FA562608EE19002D95F6 /* CoreDataSaving+CoreDataProperties.swift */,
+				7072FA4F2608EC79002D95F6 /* CoreDataSaving.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		7091663225F0403D0016DC6A /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,9 +170,6 @@
 		A3BA729E25A5540D00D0EC40 = {
 			isa = PBXGroup;
 			children = (
-				70EF797425F85AFD004BF5B1 /* Fonts */,
-				7091664325F1B3CA0016DC6A /* Extensions */,
-				7091663225F0403D0016DC6A /* Models */,
 				A3BA72A925A5540D00D0EC40 /* ImageStyle */,
 				A3BA72BB25A5541700D0EC40 /* ImageStyleTests */,
 				A3BA72C625A5541700D0EC40 /* ImageStyleUITests */,
@@ -177,6 +190,10 @@
 		A3BA72A925A5540D00D0EC40 /* ImageStyle */ = {
 			isa = PBXGroup;
 			children = (
+				7072FA5C2608EE51002D95F6 /* CoreData */,
+				70EF797425F85AFD004BF5B1 /* Fonts */,
+				7091664325F1B3CA0016DC6A /* Extensions */,
+				7091663225F0403D0016DC6A /* Models */,
 				A364564625BCC7510087D5BF /* Controller */,
 				A3FB1E8D25BBC60E0033DF5E /* View */,
 				A3BA72D825A554D200D0EC40 /* Manager */,
@@ -218,10 +235,10 @@
 			isa = PBXGroup;
 			children = (
 				A3BA72D925A5551900D0EC40 /* ImagePicker.swift */,
-				A3483BD525BA1EE200F483F2 /* ImageSaver.swift */,
 				A364563E25BCBCCF0087D5BF /* ImageManager.swift */,
 				7091663E25F190A20016DC6A /* ModelManager.swift */,
 				704A94AD260521B2007E980C /* MoodManager.swift */,
+				7072FA632608FF96002D95F6 /* CoreDataManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -375,6 +392,7 @@
 				707400DF25F6CA0D001E1F70 /* SwiftUIExtension.swift in Sources */,
 				A3BA72DA25A5551900D0EC40 /* ImagePicker.swift in Sources */,
 				70833C8D25F91AA8001EE986 /* CalendarView.swift in Sources */,
+				7072FA512608EC79002D95F6 /* CoreDataSaving.xcdatamodeld in Sources */,
 				A3BA72AD25A5540D00D0EC40 /* ImageFilterStyleView.swift in Sources */,
 				70CE3C3A25F40857003264CB /* MoodView.swift in Sources */,
 				A3BA72AB25A5540D00D0EC40 /* ImageStyleApp.swift in Sources */,
@@ -383,11 +401,13 @@
 				704A94AE260521B2007E980C /* MoodManager.swift in Sources */,
 				7091665025F1B8840016DC6A /* UIImageExtension.swift in Sources */,
 				7091663925F16F3B0016DC6A /* ImageMLFilterView.swift in Sources */,
+				7072FA582608EE19002D95F6 /* CoreDataSaving+CoreDataProperties.swift in Sources */,
 				7091663425F0405A0016DC6A /* KoreanStyle.mlmodel in Sources */,
 				A364564825BCC7670087D5BF /* AlertController.swift in Sources */,
+				7072FA572608EE19002D95F6 /* CoreDataSaving+CoreDataClass.swift in Sources */,
 				7091663F25F190A20016DC6A /* ModelManager.swift in Sources */,
 				A3FB1E8F25BBC6270033DF5E /* ImageTransferStyleView.swift in Sources */,
-				A3483BD625BA1EE200F483F2 /* ImageSaver.swift in Sources */,
+				7072FA642608FF96002D95F6 /* CoreDataManager.swift in Sources */,
 				70CE3C3525F3DC72003264CB /* PeachBlushStyle.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,6 +728,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		7072FA4F2608EC79002D95F6 /* CoreDataSaving.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7072FA502608EC79002D95F6 /* CoreDataSave.xcdatamodel */,
+			);
+			currentVersion = 7072FA502608EC79002D95F6 /* CoreDataSave.xcdatamodel */;
+			path = CoreDataSaving.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A3BA729F25A5540D00D0EC40 /* Project object */;
 }

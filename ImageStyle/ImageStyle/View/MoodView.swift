@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct MoodView: View {
+   
+    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var model = ModelManager.shared
     @State var moodText = ""
     @State var textIsChanged = false
     @State var moodIsReady = false
-    var pickedImage: Image
+    @State var pickedImage: Data
     @ObservedObject var mood = MoodManager.shared
     let format = DateFormatter.dateAndMonth
     var body: some View {
         GeometryReader{ geo in
-            
             ScrollView{
                 VStack{
                     Spacer().frame(height: 20)
-                    pickedImage.resizable().frame(width: geo.size.height / 4 ,height: geo.size.height / 4 , alignment: .center).clipShape(RoundedRectangle(cornerRadius: 10))
+                    Image(uiImage: UIImage(data: pickedImage) ?? UIImage()).resizable().frame(width: geo.size.height / 4 ,height: geo.size.height / 4 , alignment: .center).clipShape(RoundedRectangle(cornerRadius: 10))
                     Spacer().frame(height: 20)
                     ZStack(alignment: .top){
                         HStack{
@@ -59,21 +60,47 @@ struct MoodView: View {
                 resignFirstResponder()
             }){
                 Image(systemName: "checkmark")
-                }) : (Button(action: {
-                    moodIsReady = true
-                }){
-                    Image(systemName: "chevron.right")
-                }))
+            }) : (Button(action: {
+                
+                addItem()
+                
+            }){
+                Image(systemName: "chevron.right")
+            }))
         }.background(LinearGradient.primaryBackgroundColor)
         .sheet(isPresented: $mood.pubChangingDate, onDismiss: mood.didDatePickerDismissed){
             DatePickerView()
         }
+        
     }
-
+    
     
     func resignFirstResponder() {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+    
+    private func addItem() {
+      
+            let newItem = CoreDataSaving(context: viewContext)
+            print(mood.pubDate)
+            newItem.daydate = mood.pubDate
+            newItem.daydescription = moodText
+            newItem.dayimage = pickedImage
+            
+            
+            do {
+                try viewContext.save()
+               
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nsError = error as NSError
+                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+            }
+        
+        moodIsReady = true
+    }
+    
 }
 
 
@@ -87,8 +114,8 @@ struct DatePickerView: View {
 }
 
 struct MoodView_Previews: PreviewProvider {
-     
+    
     static var previews: some View {
-        MoodView(pickedImage: Image(""))
+        MoodView(pickedImage: Data())
     }
 }
