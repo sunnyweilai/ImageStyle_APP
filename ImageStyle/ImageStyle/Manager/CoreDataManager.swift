@@ -1,24 +1,46 @@
 //
 //  CoreDataManager.swift
-//  ImageStyle
+//  Test
 //
-//  Created by Lai Wei on 2021-03-22.
+//  Created by Lai Wei on 2021-03-29.
 //
 
 import Foundation
 import CoreData
+import SwiftUI
+import Combine
 
-struct CoreDataManager {
+class CoreDataManager: NSObject, ObservableObject {
+    @Published var willChange = PassthroughSubject<Void, Never>()
+    
+    var savingData = [CoreDataSaving]() {
+        willSet {
+            willChange.send()
+        }
+    }
+    
+    fileprivate var fetchResultsController: NSFetchedResultsController<CoreDataSaving>
+    
+    override init() {
+        let request = CoreDataSaving.sortedFetchRequest
+        request.fetchBatchSize = 20
+        request.returnsObjectsAsFaults = false
+        self.fetchResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: DayCoreData.shared.container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        super.init()
+        
+        fetchResultsController.delegate = self
+        
+        try! fetchResultsController.performFetch()
+        savingData = fetchResultsController.fetchedObjects!
+        
+    }
     
     
-    static let shared = CoreDataManager()
-     let container: NSPersistentContainer = {
-          let container = NSPersistentContainer(name: "CoreDataSaving")
-          container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-              if let error = error as NSError? {
-                  fatalError("Unresolved error \(error), \(error.userInfo)")
-              }
-          })
-          return container
-      }()
+}
+
+extension CoreDataManager: NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        savingData = controller.fetchedObjects as! [CoreDataSaving]
+    }
 }

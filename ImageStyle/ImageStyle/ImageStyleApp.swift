@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct ImageStyleApp: App {
-    let coreDataManager = CoreDataManager.shared
     @ObservedObject var alert = AlertController.shared
     @ObservedObject var image = ImageManager.shared
     let startColor = "#FEA2A2"
@@ -24,7 +23,6 @@ struct ImageStyleApp: App {
             NavigationView{
                 ImageTransferStyleView()
             }
-            .environment(\.managedObjectContext, coreDataManager.container.viewContext)
             .navigationBarColor(backgroundColor: UIColor(hex: startColor), buttonColor: .white)
             .alert(isPresented: self.$alert.presentAlert){ () -> Alert in
                 if self.alert.type == .confirm {

@@ -10,23 +10,17 @@ import CoreData
 
 
 struct CalendarRootView: View {
-    @Environment(\.managedObjectContext) private var viewContext
-    @FetchRequest(entity:CoreDataSaving.entity(), sortDescriptors:[
-        NSSortDescriptor(keyPath: \CoreDataSaving.dayimage, ascending: true),
-        NSSortDescriptor(keyPath: \CoreDataSaving.daydescription, ascending: true),
-        NSSortDescriptor(keyPath: \CoreDataSaving.daydate, ascending: true)
-    ]
-    ) var coreDataSavings : FetchedResults<CoreDataSaving>
+    @ObservedObject var coreDataManager = CoreDataManager()
     @Environment(\.calendar) var calendar
     
     @ObservedObject var imageManager  = ImageManager.shared
     @ObservedObject var mood = MoodManager.shared
     @ObservedObject var model = ModelManager.shared
     
-    @State var isWithImage = false
     @State var isTapped = false
     
     @State var inputImage: Data
+    @State var outputImage: Data?
     let dateFormat = DateFormatter.dateAndMonthAndYear
     
     private var year: DateInterval {
@@ -42,23 +36,17 @@ struct CalendarRootView: View {
                     isTapped = true
                     mood.pubDate = date
                     imageManager.pubContentImage = nil
-                    if inputDateString  == dateFormat.string(from: date) {
-                        isWithImage = true
-                    }else {
-                        isWithImage = false
-                        
-                    }
+                    outputImage = CoreDataSaving.getDayImage(date: date, dataset: coreDataManager.savingData)
                 })
                 {
                     Text(String(self.calendar.component(.day, from: date))).foregroundColor(inputDateString  == dateFormat.string(from: date) ? .white : .black)
                 }
                 .frame(width: (geo.size.width - 20)/7, height: (geo.size.width - 20)/7, alignment: .center)
-//                .background(inputDateString  == dateFormat.string(from: date) ?  Image(uiImage: UIImage(data: inputImage)!).resizable().aspectRatio(contentMode: .fill) : nil).clipped()
-                .background(Image(uiImage: UIImage(data:(addDayImage(currentDate: date, dataSet: coreDataSavings))) ?? UIImage()).resizable().aspectRatio(contentMode: .fill)).clipped()
-                if isWithImage {
-                    NavigationLink(destination: MoodView(pickedImage: inputImage).environment(\.managedObjectContext, self.viewContext), isActive: $isTapped){EmptyView()}
+                .background(Image(uiImage: UIImage(data:(addDayImage(currentDate: date, dataSet: coreDataManager.savingData))) ?? UIImage()).resizable().aspectRatio(contentMode: .fill)).clipped()
+                if  outputImage != nil {
+                    NavigationLink(destination: MoodView(pickedImage: outputImage!), isActive: $isTapped){EmptyView()}
                 } else {
-                    NavigationLink(destination:ImageTransferStyleView().environment(\.managedObjectContext, self.viewContext), isActive: $isTapped){EmptyView()}
+                    NavigationLink(destination:ImageTransferStyleView(), isActive: $isTapped){EmptyView()}
                 }
                 
             }.navigationBarHidden(true)
@@ -67,7 +55,7 @@ struct CalendarRootView: View {
         .background(LinearGradient.primaryBackgroundColor)
     }
     
-    func addDayImage(currentDate: Date, dataSet: FetchedResults<CoreDataSaving>) -> Data {
+    func addDayImage(currentDate: Date, dataSet: [CoreDataSaving]) -> Data {
         var dayImageBackground : Data = .init(count : 0)
         if dataSet.count > 0 {
         for saving in dataSet {
