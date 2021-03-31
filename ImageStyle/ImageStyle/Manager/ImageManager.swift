@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 import UIKit
 
-class ImageManager: ObservableObject {
+class ImageManager: NSObject, ObservableObject {
     
-    init() {}
+    override init() {}
     
     public static var shared: ImageManager = {
         let shared = ImageManager()
@@ -50,7 +50,8 @@ class ImageManager: ObservableObject {
         if let error = error {
             print ("\(error.localizedDescription)")
         } else{
-            print("success!")
+           
+            ToastManager.show(message: "Your image is successfully saved \u{1F496}!")
             
             //dismiss snapimage sheet
             ImageManager.shared.didDismiss()

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		704A94AE260521B2007E980C /* MoodManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704A94AD260521B2007E980C /* MoodManager.swift */; };
 		705E098625F5BEA500E05A84 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 705E098525F5BEA500E05A84 /* ColorExtension.swift */; };
+		706E8D472613B2EA000318DF /* ToastManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706E8D462613B2EA000318DF /* ToastManager.swift */; };
+		706E8D4C2613B67B000318DF /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 706E8D4B2613B67B000318DF /* ToastView.swift */; };
 		7072FA512608EC79002D95F6 /* CoreDataSaving.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7072FA4F2608EC79002D95F6 /* CoreDataSaving.xcdatamodeld */; };
 		7072FA572608EE19002D95F6 /* CoreDataSaving+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FA552608EE19002D95F6 /* CoreDataSaving+CoreDataClass.swift */; };
 		7072FA642608FF96002D95F6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7072FA632608FF96002D95F6 /* CoreDataManager.swift */; };
@@ -58,6 +60,8 @@
 /* Begin PBXFileReference section */
 		704A94AD260521B2007E980C /* MoodManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodManager.swift; sourceTree = "<group>"; };
 		705E098525F5BEA500E05A84 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		706E8D462613B2EA000318DF /* ToastManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastManager.swift; sourceTree = "<group>"; };
+		706E8D4B2613B67B000318DF /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
 		7072FA502608EC79002D95F6 /* CoreDataSave.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataSave.xcdatamodel; sourceTree = "<group>"; };
 		7072FA552608EE19002D95F6 /* CoreDataSaving+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CoreDataSaving+CoreDataClass.swift"; path = "ImageStyle/CoreData/CoreDataSaving+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		7072FA632608FF96002D95F6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 				7091663E25F190A20016DC6A /* ModelManager.swift */,
 				704A94AD260521B2007E980C /* MoodManager.swift */,
 				7072FA632608FF96002D95F6 /* CoreDataManager.swift */,
+				706E8D462613B2EA000318DF /* ToastManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				7091663825F16F3B0016DC6A /* ImageMLFilterView.swift */,
 				70CE3C3925F40857003264CB /* MoodView.swift */,
 				70833C8C25F91AA8001EE986 /* CalendarView.swift */,
+				706E8D4B2613B67B000318DF /* ToastView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				7072FA512608EC79002D95F6 /* CoreDataSaving.xcdatamodeld in Sources */,
 				A3BA72AD25A5540D00D0EC40 /* ImageFilterStyleView.swift in Sources */,
 				70CE3C3A25F40857003264CB /* MoodView.swift in Sources */,
+				706E8D4C2613B67B000318DF /* ToastView.swift in Sources */,
 				A3BA72AB25A5540D00D0EC40 /* ImageStyleApp.swift in Sources */,
 				A364563F25BCBCCF0087D5BF /* ImageManager.swift in Sources */,
 				705E098625F5BEA500E05A84 /* ColorExtension.swift in Sources */,
@@ -407,6 +414,7 @@
 				7072FA572608EE19002D95F6 /* CoreDataSaving+CoreDataClass.swift in Sources */,
 				7091663F25F190A20016DC6A /* ModelManager.swift in Sources */,
 				A3FB1E8F25BBC6270033DF5E /* ImageTransferStyleView.swift in Sources */,
+				706E8D472613B2EA000318DF /* ToastManager.swift in Sources */,
 				7072FA642608FF96002D95F6 /* CoreDataManager.swift in Sources */,
 				70CE3C3525F3DC72003264CB /* PeachBlushStyle.mlmodel in Sources */,
 			);

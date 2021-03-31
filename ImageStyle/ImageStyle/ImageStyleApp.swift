@@ -11,6 +11,7 @@ import SwiftUI
 struct ImageStyleApp: App {
     @ObservedObject var alert = AlertController.shared
     @ObservedObject var image = ImageManager.shared
+    @ObservedObject var toast  = ToastManager.shared
     let startColor = "#FEA2A2"
     let endColor = "#E5CF7E"
     init() {
@@ -20,10 +21,18 @@ struct ImageStyleApp: App {
     }
     var body: some Scene {
         WindowGroup {
+            ZStack{
             NavigationView{
                 ImageTransferStyleView()
             }
             .navigationBarColor(backgroundColor: UIColor(hex: startColor), buttonColor: .white)
+            .zIndex(1)
+                
+                if self.toast.pubPresentToastView {
+                    ToastView().zIndex(2)
+                }
+                
+            }
             .alert(isPresented: self.$alert.presentAlert){ () -> Alert in
                 if self.alert.type == .confirm {
                     return Alert(title: Text(alert.title ?? ""), message: Text(alert.message), primaryButton: Alert.Button.default(Text(alert.confirmButtonText), action: {

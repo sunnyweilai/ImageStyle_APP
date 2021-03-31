@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We want to save teh filterd photo</string>
+	<string>We want to save the filterd photo</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Rasa-Bold.ttf</string>

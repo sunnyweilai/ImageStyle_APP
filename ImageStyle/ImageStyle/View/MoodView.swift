@@ -22,7 +22,7 @@ struct MoodView: View {
             ScrollView{
                 VStack{
                     Spacer().frame(height: 20)
-                    Image(uiImage: UIImage(data: pickedImage) ?? UIImage()).resizable().frame(width: geo.size.height / 4 ,height: geo.size.height / 4 , alignment: .center).clipShape(RoundedRectangle(cornerRadius: 10))
+                    Image(uiImage: UIImage(data: pickedImage) ?? UIImage()).resizable().aspectRatio(contentMode: .fill).frame(width: geo.size.height / 4 ,height: geo.size.height / 4 , alignment: .center).clipShape(RoundedRectangle(cornerRadius: 10))
                     Spacer().frame(height: 20)
                     ZStack(alignment: .top){
                         HStack{
@@ -62,7 +62,7 @@ struct MoodView: View {
                 Image(systemName: "checkmark")
             }) : (Button(action: {
                 
-                CoreDataSaving.update(date: mood.pubDate, dataset: coreDataManager.savingData, text: moodText, image: pickedImage)
+                CoreDataSaving().update(date: mood.pubDate, dataset: coreDataManager.savingData, text: moodText, image: pickedImage)
                 moodIsReady = true
                 
             }){

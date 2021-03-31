@@ -15,7 +15,7 @@ final class CoreDataSaving: NSManagedObject,Managed {
     @NSManaged public var daydescription: String?
     @NSManaged public var dayimage: Data?
     
-    static func update(date: Date, dataset: [CoreDataSaving], text: String?, image: Data?)  {
+    func update(date: Date, dataset: [CoreDataSaving], text: String?, image: Data?)  {
         var inDataset = false
         let context = DayCoreData.shared.container.viewContext
         let dateFormat = DateFormatter.dateAndMonthAndYear
@@ -30,6 +30,9 @@ final class CoreDataSaving: NSManagedObject,Managed {
                 if inDataset {
                     item.setValue(text, forKey: "daydescription")
                     item.setValue(image, forKey: "dayimage")
+                    DispatchQueue.main.async {
+                        self.saveData(context: context)
+                    }
                     return
                 }
             }
@@ -39,8 +42,19 @@ final class CoreDataSaving: NSManagedObject,Managed {
             newItem.daydate = date
             newItem.daydescription = text
             newItem.dayimage = image
+            DispatchQueue.main.async {
+                self.saveData(context: context)
+            }
         }
        
+    }
+    
+    private func saveData(context: NSManagedObjectContext) {
+        do {
+             try context.save()
+        } catch  {
+            fatalError("\(error)")
+        }
     }
     
     static func getDayImage(date: Date, dataset: [CoreDataSaving]) ->Data?{

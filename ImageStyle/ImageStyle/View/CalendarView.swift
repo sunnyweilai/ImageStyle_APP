@@ -13,9 +13,10 @@ struct CalendarRootView: View {
     @ObservedObject var coreDataManager = CoreDataManager()
     @Environment(\.calendar) var calendar
     
-    @ObservedObject var imageManager  = ImageManager.shared
+    @ObservedObject var imageManager = ImageManager.shared
     @ObservedObject var mood = MoodManager.shared
     @ObservedObject var model = ModelManager.shared
+    @ObservedObject var alert = AlertController.shared
     
     @State var isTapped = false
     
@@ -52,6 +53,17 @@ struct CalendarRootView: View {
             }.navigationBarHidden(true)
             
         }.padding(.horizontal, 10)
+        .alert(isPresented: self.$alert.presentAlert){ () -> Alert in
+            if self.alert.type == .confirm {
+                return Alert(title: Text(alert.title ?? ""), message: Text(alert.message), primaryButton: Alert.Button.default(Text(alert.confirmButtonText), action: {
+                    self.alert.confirm?()
+                }), secondaryButton: Alert.Button.cancel(Text(alert.cancelButtonText), action: {
+                    self.alert.cancel?()
+                }))
+            }
+            return Alert(title: Text(alert.title ?? ""), message: Text(alert.message), dismissButton: .default(Text("OK")))
+            
+        }
         .background(LinearGradient.primaryBackgroundColor)
     }
     

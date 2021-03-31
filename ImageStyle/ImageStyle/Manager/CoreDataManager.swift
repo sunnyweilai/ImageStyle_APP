@@ -33,10 +33,7 @@ class CoreDataManager: NSObject, ObservableObject {
         
         try! fetchResultsController.performFetch()
         savingData = fetchResultsController.fetchedObjects!
-        
     }
-    
-    
 }
 
 extension CoreDataManager: NSFetchedResultsControllerDelegate {
