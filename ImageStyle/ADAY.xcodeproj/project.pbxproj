@@ -81,16 +81,16 @@
 		70EF797925F85B21004BF5B1 /* Rasa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-Light.ttf"; sourceTree = "<group>"; };
 		A364563E25BCBCCF0087D5BF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A364564725BCC7670087D5BF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
-		A3BA72A725A5540D00D0EC40 /* ImageStyle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageStyle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3BA72A725A5540D00D0EC40 /* ADAY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADAY.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3BA72AA25A5540D00D0EC40 /* ImageStyleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyleApp.swift; sourceTree = "<group>"; };
 		A3BA72AC25A5540D00D0EC40 /* ImageFilterStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFilterStyleView.swift; sourceTree = "<group>"; };
 		A3BA72AE25A5541600D0EC40 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3BA72B125A5541600D0EC40 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A3BA72B325A5541600D0EC40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A3BA72B825A5541700D0EC40 /* ImageStyleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageStyleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3BA72B825A5541700D0EC40 /* ADAYTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADAYTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3BA72BC25A5541700D0EC40 /* ImageStyleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyleTests.swift; sourceTree = "<group>"; };
 		A3BA72BE25A5541700D0EC40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A3BA72C325A5541700D0EC40 /* ImageStyleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageStyleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3BA72C325A5541700D0EC40 /* ADAYUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ADAYUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3BA72C725A5541700D0EC40 /* ImageStyleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStyleUITests.swift; sourceTree = "<group>"; };
 		A3BA72C925A5541700D0EC40 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3BA72D925A5551900D0EC40 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -184,9 +184,9 @@
 		A3BA72A825A5540D00D0EC40 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A3BA72A725A5540D00D0EC40 /* ImageStyle.app */,
-				A3BA72B825A5541700D0EC40 /* ImageStyleTests.xctest */,
-				A3BA72C325A5541700D0EC40 /* ImageStyleUITests.xctest */,
+				A3BA72A725A5540D00D0EC40 /* ADAY.app */,
+				A3BA72B825A5541700D0EC40 /* ADAYTests.xctest */,
+				A3BA72C325A5541700D0EC40 /* ADAYUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -264,9 +264,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A3BA72A625A5540D00D0EC40 /* ImageStyle */ = {
+		A3BA72A625A5540D00D0EC40 /* ADAY */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A3BA72CC25A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ImageStyle" */;
+			buildConfigurationList = A3BA72CC25A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ADAY" */;
 			buildPhases = (
 				A3BA72A325A5540D00D0EC40 /* Sources */,
 				A3BA72A425A5540D00D0EC40 /* Frameworks */,
@@ -276,14 +276,14 @@
 			);
 			dependencies = (
 			);
-			name = ImageStyle;
+			name = ADAY;
 			productName = ImageStyle;
-			productReference = A3BA72A725A5540D00D0EC40 /* ImageStyle.app */;
+			productReference = A3BA72A725A5540D00D0EC40 /* ADAY.app */;
 			productType = "com.apple.product-type.application";
 		};
-		A3BA72B725A5541700D0EC40 /* ImageStyleTests */ = {
+		A3BA72B725A5541700D0EC40 /* ADAYTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A3BA72CF25A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ImageStyleTests" */;
+			buildConfigurationList = A3BA72CF25A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ADAYTests" */;
 			buildPhases = (
 				A3BA72B425A5541700D0EC40 /* Sources */,
 				A3BA72B525A5541700D0EC40 /* Frameworks */,
@@ -294,14 +294,14 @@
 			dependencies = (
 				A3BA72BA25A5541700D0EC40 /* PBXTargetDependency */,
 			);
-			name = ImageStyleTests;
+			name = ADAYTests;
 			productName = ImageStyleTests;
-			productReference = A3BA72B825A5541700D0EC40 /* ImageStyleTests.xctest */;
+			productReference = A3BA72B825A5541700D0EC40 /* ADAYTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A3BA72C225A5541700D0EC40 /* ImageStyleUITests */ = {
+		A3BA72C225A5541700D0EC40 /* ADAYUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A3BA72D225A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ImageStyleUITests" */;
+			buildConfigurationList = A3BA72D225A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ADAYUITests" */;
 			buildPhases = (
 				A3BA72BF25A5541700D0EC40 /* Sources */,
 				A3BA72C025A5541700D0EC40 /* Frameworks */,
@@ -312,9 +312,9 @@
 			dependencies = (
 				A3BA72C525A5541700D0EC40 /* PBXTargetDependency */,
 			);
-			name = ImageStyleUITests;
+			name = ADAYUITests;
 			productName = ImageStyleUITests;
-			productReference = A3BA72C325A5541700D0EC40 /* ImageStyleUITests.xctest */;
+			productReference = A3BA72C325A5541700D0EC40 /* ADAYUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -339,7 +339,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A3BA72A225A5540D00D0EC40 /* Build configuration list for PBXProject "ImageStyle" */;
+			buildConfigurationList = A3BA72A225A5540D00D0EC40 /* Build configuration list for PBXProject "ADAY" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -352,9 +352,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A3BA72A625A5540D00D0EC40 /* ImageStyle */,
-				A3BA72B725A5541700D0EC40 /* ImageStyleTests */,
-				A3BA72C225A5541700D0EC40 /* ImageStyleUITests */,
+				A3BA72A625A5540D00D0EC40 /* ADAY */,
+				A3BA72B725A5541700D0EC40 /* ADAYTests */,
+				A3BA72C225A5541700D0EC40 /* ADAYUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -441,12 +441,12 @@
 /* Begin PBXTargetDependency section */
 		A3BA72BA25A5541700D0EC40 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A3BA72A625A5540D00D0EC40 /* ImageStyle */;
+			target = A3BA72A625A5540D00D0EC40 /* ADAY */;
 			targetProxy = A3BA72B925A5541700D0EC40 /* PBXContainerItemProxy */;
 		};
 		A3BA72C525A5541700D0EC40 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A3BA72A625A5540D00D0EC40 /* ImageStyle */;
+			target = A3BA72A625A5540D00D0EC40 /* ADAY */;
 			targetProxy = A3BA72C425A5541700D0EC40 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -573,6 +573,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ImageStyle/Preview Content\"";
 				DEVELOPMENT_TEAM = P2M55U69JL;
@@ -583,10 +584,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = laiwei.sunny.ImageStyle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.laiwei.aday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -595,6 +597,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ImageStyle/Preview Content\"";
 				DEVELOPMENT_TEAM = P2M55U69JL;
@@ -605,10 +608,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = laiwei.sunny.ImageStyle;
+				PRODUCT_BUNDLE_IDENTIFIER = com.laiwei.aday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -630,7 +634,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImageStyle.app/ImageStyle";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADAY.app/ADAY";
 			};
 			name = Debug;
 		};
@@ -652,7 +656,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ImageStyle.app/ImageStyle";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADAY.app/ADAY";
 			};
 			name = Release;
 		};
@@ -699,7 +703,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A3BA72A225A5540D00D0EC40 /* Build configuration list for PBXProject "ImageStyle" */ = {
+		A3BA72A225A5540D00D0EC40 /* Build configuration list for PBXProject "ADAY" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3BA72CA25A5541700D0EC40 /* Debug */,
@@ -708,7 +712,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A3BA72CC25A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ImageStyle" */ = {
+		A3BA72CC25A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ADAY" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3BA72CD25A5541700D0EC40 /* Debug */,
@@ -717,7 +721,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A3BA72CF25A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ImageStyleTests" */ = {
+		A3BA72CF25A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ADAYTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3BA72D025A5541700D0EC40 /* Debug */,
@@ -726,7 +730,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A3BA72D225A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ImageStyleUITests" */ = {
+		A3BA72D225A5541700D0EC40 /* Build configuration list for PBXNativeTarget "ADAYUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A3BA72D325A5541700D0EC40 /* Debug */,

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A3BA72A625A5540D00D0EC40"
-               BuildableName = "ImageStyle.app"
-               BlueprintName = "ImageStyle"
-               ReferencedContainer = "container:ImageStyle.xcodeproj">
+               BuildableName = "ADAY.app"
+               BlueprintName = "ADAY"
+               ReferencedContainer = "container:ADAY.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A3BA72B725A5541700D0EC40"
-               BuildableName = "ImageStyleTests.xctest"
-               BlueprintName = "ImageStyleTests"
-               ReferencedContainer = "container:ImageStyle.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A3BA72C225A5541700D0EC40"
-               BuildableName = "ImageStyleUITests.xctest"
-               BlueprintName = "ImageStyleUITests"
-               ReferencedContainer = "container:ImageStyle.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -65,18 +45,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A3BA72A625A5540D00D0EC40"
-            BuildableName = "ImageStyle.app"
-            BlueprintName = "ImageStyle"
-            ReferencedContainer = "container:ImageStyle.xcodeproj">
+            BuildableName = "ADAY.app"
+            BlueprintName = "ADAY"
+            ReferencedContainer = "container:ADAY.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -89,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A3BA72A625A5540D00D0EC40"
-            BuildableName = "ImageStyle.app"
-            BlueprintName = "ImageStyle"
-            ReferencedContainer = "container:ImageStyle.xcodeproj">
+            BuildableName = "ADAY.app"
+            BlueprintName = "ADAY"
+            ReferencedContainer = "container:ADAY.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
