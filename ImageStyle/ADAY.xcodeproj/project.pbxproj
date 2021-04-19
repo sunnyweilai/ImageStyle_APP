@@ -21,6 +21,7 @@
 		7091663F25F190A20016DC6A /* ModelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091663E25F190A20016DC6A /* ModelManager.swift */; };
 		7091665025F1B8840016DC6A /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7091664F25F1B8840016DC6A /* UIImageExtension.swift */; };
 		70BC78392612B12E0040AA01 /* DayCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70BC78382612B12E0040AA01 /* DayCoreData.swift */; };
+		70C7A62C262BC8CE00712A7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70C7A62B262BC8CE00712A7E /* AppDelegate.swift */; };
 		70CE3C3525F3DC72003264CB /* PeachBlushStyle.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 70CE3C3425F3DC71003264CB /* PeachBlushStyle.mlmodel */; };
 		70CE3C3A25F40857003264CB /* MoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70CE3C3925F40857003264CB /* MoodView.swift */; };
 		70EF797A25F85B21004BF5B1 /* Rasa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797525F85B21004BF5B1 /* Rasa-Bold.ttf */; };
@@ -72,6 +73,8 @@
 		7091663E25F190A20016DC6A /* ModelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelManager.swift; sourceTree = "<group>"; };
 		7091664F25F1B8840016DC6A /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		70BC78382612B12E0040AA01 /* DayCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCoreData.swift; sourceTree = "<group>"; };
+		70C7A624262BC24600712A7E /* ADAY.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ADAY.entitlements; sourceTree = "<group>"; };
+		70C7A62B262BC8CE00712A7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		70CE3C3425F3DC71003264CB /* PeachBlushStyle.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = PeachBlushStyle.mlmodel; sourceTree = "<group>"; };
 		70CE3C3925F40857003264CB /* MoodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodView.swift; sourceTree = "<group>"; };
 		70EF797525F85B21004BF5B1 /* Rasa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-Bold.ttf"; sourceTree = "<group>"; };
@@ -167,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				A364564725BCC7670087D5BF /* AlertController.swift */,
+				70C7A62B262BC8CE00712A7E /* AppDelegate.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -174,6 +178,7 @@
 		A3BA729E25A5540D00D0EC40 = {
 			isa = PBXGroup;
 			children = (
+				70C7A624262BC24600712A7E /* ADAY.entitlements */,
 				A3BA72A925A5540D00D0EC40 /* ImageStyle */,
 				A3BA72BB25A5541700D0EC40 /* ImageStyleTests */,
 				A3BA72C625A5541700D0EC40 /* ImageStyleUITests */,
@@ -417,6 +422,7 @@
 				706E8D472613B2EA000318DF /* ToastManager.swift in Sources */,
 				7072FA642608FF96002D95F6 /* CoreDataManager.swift in Sources */,
 				70CE3C3525F3DC72003264CB /* PeachBlushStyle.mlmodel in Sources */,
+				70C7A62C262BC8CE00712A7E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,6 +579,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ADAY.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ImageStyle/Preview Content\"";
@@ -597,6 +604,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ADAY.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"ImageStyle/Preview Content\"";

@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct ImageStyleApp: App {
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
     @ObservedObject var alert = AlertController.shared
     @ObservedObject var image = ImageManager.shared
     @ObservedObject var toast  = ToastManager.shared
