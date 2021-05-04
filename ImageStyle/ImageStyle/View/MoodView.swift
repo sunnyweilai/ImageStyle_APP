@@ -11,7 +11,7 @@ struct MoodView: View {
    
     @ObservedObject var coreDataManager = CoreDataManager()
     @ObservedObject var model = ModelManager.shared
-    @State var moodText = ""
+    @State var moodText : String
     @State var textIsChanged = false
     @State var moodIsReady = false
     @State var pickedImage: Data
@@ -95,6 +95,6 @@ struct DatePickerView: View {
 struct MoodView_Previews: PreviewProvider {
     
     static var previews: some View {
-        MoodView(pickedImage: Data())
+        MoodView(moodText: "", pickedImage: Data())
     }
 }
