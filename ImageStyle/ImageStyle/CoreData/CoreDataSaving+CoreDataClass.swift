@@ -57,24 +57,25 @@ final class CoreDataSaving: NSManagedObject,Managed {
         }
     }
     
-    static func getDayImage(date: Date, dataset: [CoreDataSaving]) ->Data?{
-        var outputImage: Data?
+    
+    static func getDayData(date: Date, dataset: [CoreDataSaving]) -> CoreDataSaving?{
+        var outputData: CoreDataSaving?
         let dateFormat = DateFormatter.dateAndMonthAndYear
         if dataset.count > 0 {
-                for item in dataset {
-                    guard let itemDate = item.daydate else {
+            for item in dataset {
+                guard let itemDate = item.daydate else {
+                    return nil
+                }
+                if dateFormat.string(from: itemDate) == dateFormat.string(from: date){
+                    guard let _ = item.dayimage else {
                         return nil
                     }
-                    if dateFormat.string(from: itemDate)  == dateFormat.string(from: date) {
-                        guard let image = item.dayimage else {
-                            return nil
-                        }
-                        outputImage = image
-                    }
+                    outputData = item
+                }
             }
+            
         }
-            return outputImage
-        
+        return outputData
     }
 }
 

@@ -22,6 +22,7 @@ struct CalendarRootView: View {
     
     @State var inputImage: Data
     @State var outputImage: Data?
+    @State var outputData: CoreDataSaving?
     let dateFormat = DateFormatter.dateAndMonthAndYear
     
     private var year: DateInterval {
@@ -37,15 +38,16 @@ struct CalendarRootView: View {
                     isTapped = true
                     mood.pubDate = date
                     imageManager.pubContentImage = nil
-                    outputImage = CoreDataSaving.getDayImage(date: date, dataset: coreDataManager.savingData)
+                   
+                    outputData = CoreDataSaving.getDayData(date: date, dataset: coreDataManager.savingData)
                 })
                 {
                     Text(String(self.calendar.component(.day, from: date))).foregroundColor(inputDateString  == dateFormat.string(from: date) ? .white : .black)
                 }
                 .frame(width: (geo.size.width - 20)/7, height: (geo.size.width - 20)/7, alignment: .center)
                 .background(Image(uiImage: UIImage(data:(addDayImage(currentDate: date, dataSet: coreDataManager.savingData))) ?? UIImage()).resizable().aspectRatio(contentMode: .fill)).clipped()
-                if  outputImage != nil {
-                    NavigationLink(destination: MoodView(pickedImage: outputImage!), isActive: $isTapped){EmptyView()}
+                if  outputData?.dayimage != nil {
+                    NavigationLink(destination: MoodView(moodText: outputData?.daydescription ?? "", pickedImage: (outputData?.dayimage)!), isActive: $isTapped){EmptyView()}
                 } else {
                     NavigationLink(destination:ImageTransferStyleView(), isActive: $isTapped){EmptyView()}
                 }

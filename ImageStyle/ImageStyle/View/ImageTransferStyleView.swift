@@ -90,7 +90,7 @@ struct ImageTransferStyleView: View {
                     ImagePicker(image: self.$pickedImage)
                 }
                 
-                NavigationLink(destination: MoodView(pickedImage: image.pubContentImage ?? Data()).environment(\.managedObjectContext, self.viewContext), isActive: $imageIsReady){ EmptyView() }
+                NavigationLink(destination: MoodView(moodText: "", pickedImage: image.pubContentImage ?? Data()).environment(\.managedObjectContext, self.viewContext), isActive: $imageIsReady){ EmptyView() }
                 
             }.background(Color.primaryBackgroundColor)
         
