@@ -37,9 +37,12 @@ struct CalendarRootView: View {
                 Button(action: {
                     isTapped = true
                     mood.pubDate = date
-                    imageManager.pubContentImage = nil
+                   
                    
                     outputData = CoreDataSaving.getDayData(date: date, dataset: coreDataManager.savingData)
+                    if outputData?.dayimage == nil {
+                        imageManager.pubContentImage = nil
+                    }
                 })
                 {
                     Text(String(self.calendar.component(.day, from: date))).foregroundColor(inputDateString  == dateFormat.string(from: date) ? .white : .black)

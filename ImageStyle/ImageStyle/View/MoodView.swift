@@ -14,6 +14,7 @@ struct MoodView: View {
     @State var moodText : String
     @State var textIsChanged = false
     @State var moodIsReady = false
+    @State var toStyleView = false
     @State var pickedImage: Data
     @ObservedObject var mood = MoodManager.shared
     let format = DateFormatter.dateAndMonth
@@ -22,7 +23,13 @@ struct MoodView: View {
             ScrollView{
                 VStack{
                     Spacer().frame(height: 20)
-                    Image(uiImage: UIImage(data: pickedImage) ?? UIImage()).resizable().aspectRatio(contentMode: .fill).frame(width: geo.size.height / 4 ,height: geo.size.height / 4 , alignment: .center).clipShape(RoundedRectangle(cornerRadius: 10))
+                    Button(action: {
+                        toStyleView = true
+                    }) {
+                        
+                        Image(uiImage: UIImage(data: pickedImage) ?? UIImage()).resizable().aspectRatio(contentMode: .fill)
+                    }.frame(width: geo.size.height / 4 ,height: geo.size.height / 4 , alignment: .center).clipShape(RoundedRectangle(cornerRadius: 10))
+                   
                     Spacer().frame(height: 20)
                     ZStack(alignment: .top){
                         HStack{
@@ -44,6 +51,9 @@ struct MoodView: View {
                     }
                 }.padding([.horizontal, .bottom])
                 NavigationLink(destination: CalendarRootView(inputImage: pickedImage), isActive: $moodIsReady){ EmptyView() }
+                NavigationLink(
+                    destination: ImageTransferStyleView(),isActive:
+                    $toStyleView){EmptyView()}
             }.navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 ToolbarItem(placement: .principal){
