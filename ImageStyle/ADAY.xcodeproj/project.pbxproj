@@ -29,6 +29,7 @@
 		70EF797C25F85B21004BF5B1 /* Rasa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797725F85B21004BF5B1 /* Rasa-SemiBold.ttf */; };
 		70EF797D25F85B21004BF5B1 /* Rasa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797825F85B21004BF5B1 /* Rasa-Regular.ttf */; };
 		70EF797E25F85B21004BF5B1 /* Rasa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 70EF797925F85B21004BF5B1 /* Rasa-Light.ttf */; };
+		70FAA5532641B1BD006BEC92 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70FAA5522641B1BD006BEC92 /* Launch Screen.storyboard */; };
 		A364563F25BCBCCF0087D5BF /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364563E25BCBCCF0087D5BF /* ImageManager.swift */; };
 		A364564825BCC7670087D5BF /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364564725BCC7670087D5BF /* AlertController.swift */; };
 		A3BA72AB25A5540D00D0EC40 /* ImageStyleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BA72AA25A5540D00D0EC40 /* ImageStyleApp.swift */; };
@@ -82,6 +83,7 @@
 		70EF797725F85B21004BF5B1 /* Rasa-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-SemiBold.ttf"; sourceTree = "<group>"; };
 		70EF797825F85B21004BF5B1 /* Rasa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-Regular.ttf"; sourceTree = "<group>"; };
 		70EF797925F85B21004BF5B1 /* Rasa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Rasa-Light.ttf"; sourceTree = "<group>"; };
+		70FAA5522641B1BD006BEC92 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		A364563E25BCBCCF0087D5BF /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		A364564725BCC7670087D5BF /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		A3BA72A725A5540D00D0EC40 /* ADAY.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ADAY.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,6 +264,7 @@
 				70CE3C3925F40857003264CB /* MoodView.swift */,
 				70833C8C25F91AA8001EE986 /* CalendarView.swift */,
 				706E8D4B2613B67B000318DF /* ToastView.swift */,
+				70FAA5522641B1BD006BEC92 /* Launch Screen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			files = (
 				70EF797C25F85B21004BF5B1 /* Rasa-SemiBold.ttf in Resources */,
 				70EF797B25F85B21004BF5B1 /* Rasa-Medium.ttf in Resources */,
+				70FAA5532641B1BD006BEC92 /* Launch Screen.storyboard in Resources */,
 				A3BA72B225A5541600D0EC40 /* Preview Assets.xcassets in Resources */,
 				70EF797A25F85B21004BF5B1 /* Rasa-Bold.ttf in Resources */,
 				70EF797E25F85B21004BF5B1 /* Rasa-Light.ttf in Resources */,

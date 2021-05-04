@@ -50,6 +50,8 @@
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<false/>
 	</dict>
+	<key>UILaunchStoryboardName</key>
+	<string>Launch Screen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
